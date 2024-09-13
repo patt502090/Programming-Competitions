@@ -58,85 +58,25 @@ if ConstType:
     Direction8 = [(0, 1), (0, -1), (1, 0), (-1, 0), (1, 1), (1, -1), (-1, 1), (-1, -1)]  # ->, <-, v, ^, ↘, ↙, ↗, ↖
     Y, N = "Yes", "No"
     A, B = "Alice", "Bob"
-
-def check(lst):
-    ans = []
-    perf = len(lst) // (3 if lst[0] not in ["7","9"] else 4)
-    remain = 0
-    if lst[0] not in ['7','9']:
-        remain = len(lst) % 3
-        if lst[0] == "1":
-            pass
-        if lst[0] == "2":
-            if remain == 1: ans.append("a")
-            if remain == 2: ans.append("b")
-        if lst[0] == "3":
-            if remain == 1: ans.append("d")
-            if remain == 2: ans.append("e")
-        if lst[0] == "4":
-            if remain == 1: ans.append("g")
-            if remain == 2: ans.append("h")
-        if lst[0] == "5":
-            if remain == 1: ans.append("j")
-            if remain == 2: ans.append("k")
-        if lst[0] == "6":
-            if remain == 1: ans.append("m")
-            if remain == 2: ans.append("n")
-        if lst[0] == "8":
-            if remain == 1: ans.append("t")
-            if remain == 2: ans.append("u")
-    else:
-        remain = len(lst) % 4
-        if lst[0] == "7":
-            if remain == 1: ans.append("p")
-            if remain == 2: ans.append("q")
-            if remain == 3: ans.append("r")
-        if lst[0] == "9":
-            if remain == 1: ans.append("w")
-            if remain == 2: ans.append("x")
-            if remain == 3: ans.append("y")
-
-    for i in range(perf):
-        if lst[0] not in ['7','9']:
-            if lst[0] == "1":
-                pass
-            if lst[0] == "2":
-                ans.append("c")
-            if lst[0] == "3":
-                ans.append("f")
-            if lst[0] == "4":
-                ans.append("i")
-            if lst[0] == "5":
-                ans.append("l")
-            if lst[0] == "6":
-                ans.append("o")
-            if lst[0] == "8":
-                ans.append("v")
-        else:
-            if lst[0] == "7":
-                ans.append("s")
-            if lst[0] == "9":
-                ans.append("z")
-    return ''.join(ans)
-
-
+ 
+def palin(word):
+    return word == word[::-1]
 def solve():
-    num =I()
-    ck = []
-    for i in range(len(num)):
-        if i == len(num)-1:
-            ck.append(num[i])
-            break
-        elif num[i] == num[i+1]:
-            ck.append(num[i])
-        elif num[i] != num[i+1]:
-            ck.append(num[i])
-            print(check(ck),end = '')
-            ck = []
+    AntheonX, AntheonY = MII()  
+    BeelorX, BeelorY = MII()
+    CicadaleX, CicadaleY  = MII()
+    cen1X = (AntheonX+CicadaleX)/2
+    cen1Y = (AntheonY+CicadaleY)/2
+    print(int((cen1X-(BeelorX-cen1X))),int((cen1Y-(BeelorY-cen1Y))))
+    cen2X = (AntheonX+BeelorX)/2
+    cen2Y = (AntheonY+BeelorY)/2
+    print(int((cen2X-(CicadaleX-cen2X))),int((cen2Y-(CicadaleY-cen2Y))))
+    cen3X = (BeelorX+CicadaleX)/2
+    cen3Y = (BeelorY+CicadaleY)/2
+    print(int((cen3X-(AntheonX-cen3X))),int((cen3Y-(AntheonY-cen3Y))))
 
-    if ck:
-       print(check(ck),end = '')
 
+        
  
 if __name__ == '__main__':
    TEST = 1
