@@ -12,5 +12,6 @@ func main() {
 	fmt.Scan(&b)
 	fmt.Print("Height: ")
 	fmt.Scan(&h)
-	fmt.Printf("Area: %.4f\n", 0.5*b*h)
+	area := 0.5 * b * h
+	fmt.Printf("Base: %.1f Height: %.1f Area: %.4f\n", b, h, area)
 }
