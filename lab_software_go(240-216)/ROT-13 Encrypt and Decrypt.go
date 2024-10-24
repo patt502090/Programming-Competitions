@@ -7,47 +7,39 @@ import (
 	"strings"
 )
 
+func rot13(r rune) rune {
+	if r >= 'a' && r <= 'z' {
+		return (r-'a'+13)%26 + 'a'
+	}
+	if r >= 'A' && r <= 'Z' {
+		return (r-'A'+13)%26 + 'A'
+	}
+	return r
+}
+
 func main() {
 	reader := bufio.NewReader(os.Stdin)
-	var opt int
-
-	// แสดงตัวเลือก
 	fmt.Println("Select 2 options")
 	fmt.Println(" - 1 encrypt with ROT 13")
 	fmt.Println(" - 2 decrypt with ROT 13\n")
+	var option int
+	fmt.Print("Choose option:")
+	fmt.Scanf("%d\n", &option)
 
-	// รับตัวเลือกจากผู้ใช้
-	fmt.Print("Choose option: ")
-	fmt.Scan(&opt)
+	fmt.Println("Enter text:")
+	text, _ := reader.ReadString('\n')
+	text = strings.TrimSpace(text)
 
-	// รับข้อความจากผู้ใช้
-	fmt.Print("Enter text: ")
-	input, _ := reader.ReadString('\n')
-	input = strings.TrimSpace(input)
-
-	var result string
-
-	// เข้ารหัสหรือถอดรหัสตามตัวเลือก
-	for _, char := range input {
-		if char >= 'A' && char <= 'Z' {
-			// ROT13 สำหรับตัวอักษรใหญ่
-			result += string('A' + (char-'A'+13)%26)
-		} else if char >= 'a' && char <= 'z' {
-			// ROT13 สำหรับตัวอักษรเล็ก
-			result += string('a' + (char-'a'+13)%26)
-		} else {
-			// ตัวอักษรอื่นๆ ไม่เปลี่ยนแปลง
-			result += string(char)
-		}
+	result := ""
+	for _, char := range text {
+		result += string(rot13(char))
 	}
 
-	// แสดงผลลัพธ์
-	if opt == 1 {
+	if option == 1 {
 		fmt.Printf("Ciphertext is \"%s\"\n", result)
-	} else if opt == 2 {
-		// สำหรับ ROT13 การเข้ารหัสและการถอดรหัสจะเหมือนกัน
+	} else if option == 2 {
 		fmt.Printf("Plaintext is \"%s\"\n", result)
 	} else {
-		fmt.Println("Invalid option")
+		fmt.Println("Invalid option selected")
 	}
 }

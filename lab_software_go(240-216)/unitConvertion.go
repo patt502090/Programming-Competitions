@@ -32,21 +32,28 @@ func main() {
 
 	if unit == "cm" {
 		if unitInp == "mm" {
-			fmt.Printf("Value after unit conversion is %.1fmm\n", value*10)
+			fmt.Printf("Value after unit conversion is %.0fmm\n", value*10)
 		} else if unitInp == "m" {
-			fmt.Printf("Value after unit conversion is %.1fm\n", value/100)
+			convertedValue := value / 100
+			if value >= 100 {
+				fmt.Printf("Value after unit conversion is %.1fm\n", convertedValue)
+			} else if convertedValue == float64(int(convertedValue)) {
+				fmt.Printf("Value after unit conversion is %.2fm\n", convertedValue)
+			} else {
+				fmt.Printf("Value after unit conversion is %.3fm\n", convertedValue)
+			}
 		}
 	} else if unit == "mm" {
 		if unitInp == "cm" {
-			fmt.Printf("Value after unit conversion is %.1fcm\n", value/10)
+			fmt.Printf("Value after unit conversion is %.2fcm\n", value/10)
 		} else if unitInp == "m" {
-			fmt.Printf("Value after unit conversion is %.1fm\n", value/1000)
+			fmt.Printf("Value after unit conversion is %.3fm\n", value/1000)
 		}
 	} else if unit == "m" {
 		if unitInp == "cm" {
-			fmt.Printf("Value after unit conversion is %.1fcm\n", value*100)
+			fmt.Printf("Value after unit conversion is %.0fcm\n", value*100)
 		} else if unitInp == "mm" {
-			fmt.Printf("Value after unit conversion is %.1fmm\n", value*1000)
+			fmt.Printf("Value after unit conversion is %.0fmm\n", value*1000)
 		}
 	}
 }

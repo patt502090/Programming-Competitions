@@ -5,13 +5,12 @@ import (
 )
 
 func main() {
-
-	var b float64
-	var h float64
+	var b float32
+	var h float32
 	fmt.Print("Base: ")
 	fmt.Scan(&b)
 	fmt.Print("Height: ")
 	fmt.Scan(&h)
-	area := 0.5 * b * h
-	fmt.Printf("Base: %.1f Height: %.1f Area: %.4f\n", b, h, area)
+	fmt.Printf("Area: %.4f", b*h*0.5)
+
 }
