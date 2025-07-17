@@ -78,7 +78,6 @@ if ConstType:
 def solve():
     cnt = 0
     lst = []
-
     while True:
         x, y, z = map(int, input().split())
         if x == 0 and y == 0 and z == 0:
@@ -86,9 +85,10 @@ def solve():
         lst.append((x, y, z))
     for i in range(len(lst)):
         for j in range(i+1,len(lst)):
-            print(lst[i],lst[j])
-            print(sqrt((lst[i][0] - lst[j][0]) ** 2 + (lst[i][1] - lst[j][1]) ** 2 + (lst[i][2] - lst[j][2]) ** 2))
-
+            ck = sqrt((lst[i][0] - lst[j][0]) ** 2 + (lst[i][1] - lst[j][1]) ** 2 + (lst[i][2] - lst[j][2]) ** 2)
+            if ck < cnt or cnt == 0:
+                cnt = ck
+    print(f"{cnt:.3f}")
 
 # while len(data) < n:
 #     data.append()
