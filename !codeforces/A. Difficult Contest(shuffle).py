@@ -72,7 +72,8 @@ if FunctinoType:
         # math_obj = Math()
         # combination = math_obj.comb(5, 2)  # คำนวณค่า C(5, 2) = 10
         # permutation = math_obj.perm(5, 2)  # คำนวณค่า P(5, 2) = 20
-        
+
+
 if ConstType:
     MOD1, MOD9 = 10**9 + 7, 998244353
     RD = random.randint(MOD1, MOD1 << 1)
@@ -91,22 +92,26 @@ if ConstType:
     A, B = "Alice", "Bob"
 
 
+# def solve():
+#     wrd = input()
+#     wrd = list(wrd)
+
+#     while "FFT" in "".join(wrd) or "NTT" in "".join(wrd):
+#         shuffle(wrd)
+
+#     print("".join(wrd))
+
 def solve():
-    wrd = input()
-    wrd = list(wrd)
-    
-    while "FFT" in "".join(wrd) or "NTT" in "".join(wrd):
-        random.shuffle(wrd) 
-        
+    wrd = list(input())
+    if "FFT" in "".join(wrd) or "NTT" in "".join(wrd):
+        wrd.sort()
+        wrd = wrd[::-1]
     print("".join(wrd))
 
-         
-    
-        
-    
+
+
+
 if __name__ == "__main__":
     TEST = II()
     for _ in range(TEST):
         solve()
-
-
