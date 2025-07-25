@@ -12,3 +12,15 @@ for i in range(n):
     ans.append(str(lst[i][1]))
 for i in ans[::-1]:
     print(i)
+    
+
+#============version สั้นๆ by chatgpt================
+# n, t = map(int, input().split())
+# lst = [input().split(maxsplit=1) for _ in range(t)]
+
+# # เรียงลำดับตามตัวเลขและคำนวณผลรวม
+# lst.sort(reverse=True, key=lambda x: int(x[0]))
+
+# # คำนวณผลรวมและพิมพ์คำตอบ
+# print(sum(int(x[0]) for x in lst[:n]))
+# print("\n".join(x[1] for x in lst[:n][::-1]))
