@@ -91,45 +91,21 @@ if ConstType:
     A, B = "Alice", "Bob"
 
 def solve():
-    n, m = MII()
+    n = int(input())
+    a = []
+    while len(a) < n:
+        a.extend(map(int, input().split()))
 
-    # สร้าง dict เก็บจำนวนคลิกที่ใช้ไปถึงเลขนั้นๆ
-    # key: เลขที่ได้, value: จำนวนคลิกที่ใช้
-    d = {}
+    max_sum = current_sum = a[0]
+    for i in range(1, n):
+        current_sum = max(a[i], current_sum + a[i])
+        max_sum = max(max_sum, current_sum)
 
-    # ใช้ deque เป็น queue สำหรับ BFS
-    q = deque()
-
-    # เริ่มต้นที่เลข n ใช้ 0 คลิก (ยังไม่กดปุ่มเลย)
-    d[n] = 0
-    q.append(n)  # ใส่เลขเริ่มต้นเข้า queue
-
-    # เริ่ม BFS
-    while True:
-        x = q.popleft()  # ดึงเลขตัวแรกออกจาก queue เพื่อสำรวจ
-        print(q)
-
-        if x == m:
-            # เจอเลขเป้าหมายแล้ว หยุด loop
-            break
-
-        # กดปุ่มแดง: x → 2x (ถ้าไม่เกินเป้าหมาย และยังไม่เคยเยี่ยมชม)
-        if x < m and 2 * x not in d:
-            d[2 * x] = d[x] + 1
-            q.append(2 * x)
-
-        # กดปุ่มน้ำเงิน: x → x-1 (ถ้ามากกว่า 0 และยังไม่เคยเยี่ยมชม)
-        if x - 1 > 0 and (x - 1) not in d:
-            d[x - 1] = d[x] + 1
-            q.append(x - 1)
-
-    # พิมพ์จำนวนคลิกที่ใช้ไปถึงเลข m
-    print(d[m])
-
-
+    print(max_sum)
+    
 if __name__ == "__main__":
     TEST = 1
     for _ in range(TEST):
         solve()
-
+  
 
