@@ -91,7 +91,7 @@ if ConstType:
     A, B = "Alice", "Bob"
 
 def solve():
-    n, m = map(int, input().split())
+    n, m = MII()
 
     # สร้าง dict เก็บจำนวนคลิกที่ใช้ไปถึงเลขนั้นๆ
     # key: เลขที่ได้, value: จำนวนคลิกที่ใช้
@@ -107,6 +107,7 @@ def solve():
     # เริ่ม BFS
     while True:
         x = q.popleft()  # ดึงเลขตัวแรกออกจาก queue เพื่อสำรวจ
+        print(q)
 
         if x == m:
             # เจอเลขเป้าหมายแล้ว หยุด loop
@@ -127,7 +128,7 @@ def solve():
 
 
 if __name__ == "__main__":
-    TEST = II()
+    TEST = 1
     for _ in range(TEST):
         solve()
 
