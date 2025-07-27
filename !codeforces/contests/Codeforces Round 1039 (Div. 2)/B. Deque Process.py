@@ -20,6 +20,7 @@ from string import (
     printable,
     whitespace,
 )
+
 input = lambda: sys.stdin.readline().rstrip("\r\n")
 I = lambda: input()
 II = lambda: int(input())
@@ -33,57 +34,35 @@ MOD1, MOD9 = 10**9 + 7, 998244353
 Y, N = "Yes", "No"
 
 
-
 def solve():
     n = II()
     a = LII()
-    d = deque(a)
-    q = []
+    q = deque(a)
+
     ans = []
-
-    def is_bad(arr):
-        if len(arr) < 5:
-            return False
-        inc = all(arr[i] < arr[i + 1] for i in range(4))
-        dec = all(arr[i] > arr[i + 1] for i in range(4))
-        return inc or dec
-
-    while d:
-        if not q:
-            q.append(d.popleft())
-            ans.append('L')
-            continue
-
-        if len(d) == 1:
-            q.append(d.popleft())
-            ans.append('L')
-            continue
-            
-        can_l, can_r = True, True
-        if len(q) >= 4:
-            if is_bad(q[-4:] + [d[0]]):
-                can_l = False
-            if is_bad(q[-4:] + [d[-1]]):
-                can_r = False
-
-        if can_l and can_r:
-            if abs(d[0] - q[-1]) < abs(d[-1] - q[-1]):
-                q.append(d.popleft())
-                ans.append('L')
+    cnt = 0
+    is_max = True
+    for _ in range(n):
+        if is_max:
+            if q[0] > q[-1]:
+                ans.append("L")
+                q.popleft()
             else:
-                q.append(d.pop())
-                ans.append('R')
-        elif can_l:
-            q.append(d.popleft())
-            ans.append('L')
-        elif can_r:
-            q.append(d.pop())
-            ans.append('R')
+                ans.append("R")
+                q.pop()
+
         else:
-            q.append(d.popleft())
-            ans.append('L')
+            if q[0] > q[-1]:
+                ans.append("R")
+                q.pop()
+            else:
+                ans.append("L")
+                q.popleft()
+
+        is_max = not is_max
 
     print("".join(ans))
+
 
 if __name__ == "__main__":
     try:
