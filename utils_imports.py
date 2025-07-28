@@ -55,6 +55,13 @@ from collections import Counter, defaultdict, deque
 # defaultdict: dict ที่กำหนด default value ให้ key ใหม่
 # deque: queue แบบเพิ่ม/ลบหน้าหลังได้เร็ว (O(1))
 
+text = "hello world"
+c = Counter(text)
+
+print(c)
+# Output: Counter({'l': 3, 'o': 2, 'h': 1, 'e': 1, ' ': 1, 'w': 1, 'r': 1, 'd': 1})
+
+
 # --------- โมดูลจัดการ iterator และชุดข้อมูล ---------
 from itertools import accumulate, combinations, permutations  
 # accumulate: ผลรวมสะสมใน iterable
