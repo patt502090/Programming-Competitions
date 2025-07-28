@@ -18,10 +18,10 @@ class Solution:
             for i in range(len(word)):
                 tf = word[:i] + "*" + word[i + 1:]  # แปลงตำแหน่งที่ i ให้เป็น "*" เช่น "hot" → "*ot", "h*t", "ho*"
                 graph[tf].append(word)  # เพิ่มคำเข้า list ของ pattern นั้น
-                print(f"Added pattern: {tf} → {word}")
+                print(f"Added pattern: {tf} -> {word}")
         print("=== Pattern Graph ===")
         for pattern, words in graph.items():
-            print(f"{pattern} → {words}")
+            print(f"{pattern} -> {words}")
         print("=====================")
 
         # เริ่ม BFS โดยใช้ queue เก็บ (word, current_distance)
