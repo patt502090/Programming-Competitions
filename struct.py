@@ -25,6 +25,13 @@ if ImportType:
         whitespace,
     )
 
+# print(string.ascii_lowercase)  # abcdefghijklmnopqrstuvwxyz
+# print(string.ascii_uppercase)  # ABCDEFGHIJKLMNOPQRSTUVWXYZ
+# print(string.digits)           # 0123456789
+# print(string.punctuation)      # !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+# print(string.printable)        # รวมหมดตัวที่พิมพ์ได้
+# print(string.whitespace)       # ช่องว่าง, \t, \n, ฯลฯ
+
 
 if InputType:
     input = lambda: sys.stdin.readline().rstrip("\r\n")
