@@ -84,7 +84,15 @@ if ConstType:
     A, B = "Alice", "Bob"
 
 def solve():
-    
+    n,k = MII()
+    lst = [LII() for _ in range(n)]
+    lst.sort(key = lambda x: x[0])
+    lst.sort(key = lambda x: x[2])
+    for l,r,real in lst:
+        if k >= l and k < real:
+            k = real
+    print(k)
+        
         
     
 if __name__ == "__main__":
@@ -92,4 +100,5 @@ if __name__ == "__main__":
     for _ in range(TEST):
         solve()
   
+
 
