@@ -85,8 +85,13 @@ if ConstType:
 
 def solve():
     n,k = MII()
-    lst = [int(x) for _ in range(n) for x in input()]
-        
+    lst = [int(input()) for _ in range(n)]
+    lst.sort(reverse = True)
+    ans = 0
+    while lst:
+        ans += max(lst[:k])
+        del lst[:k]
+    print(ans)
     
 if __name__ == "__main__":
     TEST =1
