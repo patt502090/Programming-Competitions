@@ -32,6 +32,12 @@ if ImportType:
 # print(string.printable)        # รวมหมดตัวที่พิมพ์ได้
 # print(string.whitespace)       # ช่องว่าง, \t, \n, ฯลฯ
 
+# import itertools
+# a = [3, 4, 1, 7, 9, 1]
+
+# res = list(itertools.accumulate(a))
+# print(res)
+
 
 if InputType:
     input = lambda: sys.stdin.readline().rstrip("\r\n")
