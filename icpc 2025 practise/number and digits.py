@@ -84,11 +84,17 @@ if ConstType:
     A, B = "Alice", "Bob"
 
 def solve():
-    
+    while True:
+        word = input()
+        if word == "":
+            break
+        x = Counter(word)
+        print(len(x))
+        
         
     
 if __name__ == "__main__":
-    TEST = II()
+    TEST = 1
     for _ in range(TEST):
         solve()
   

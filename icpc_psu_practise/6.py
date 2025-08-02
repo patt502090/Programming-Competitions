@@ -14,6 +14,8 @@ for i in ans[::-1]:
     print(i)
     
 
+
+
 #============version สั้นๆ by chatgpt================
 # n, t = map(int, input().split())
 # lst = [input().split(maxsplit=1) for _ in range(t)]
