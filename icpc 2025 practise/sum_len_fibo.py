@@ -114,9 +114,35 @@ def solve3():
             break
         print(int(word[::-1]))
         
-    
+def solve4():
+    while True:
+        word = input()
+        if word.strip() == "":
+            break
+        word = int(word)
+        n = word
+        a, b = 0, 1  
+        sux = 0
+        for _ in range(n):
+            print(a, end=" "    ) 
+            a, b = b, a + b  
+def solve5():
+    while True:
+        word = input()
+        if word.strip() == "":
+            break
+        word = int(word)
+        n = word
+        a, b = 0, 1  
+        for _ in range(n):
+            if a > n:
+                break
+            print(a, end=" ")
+            a, b = b, a + b  
+            
+                      
 if __name__ == "__main__":
     TEST = 1
     for _ in range(TEST):
-        solve3()
+        solve5()
   
