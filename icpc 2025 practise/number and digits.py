@@ -37,7 +37,6 @@ if InputType:
     LGMI = lambda: list(map(lambda x: int(x) - 1, input().split()))
 
 if FunctinoType:
-
     class Math:
         __slots__ = ["mod", "l", "fact", "inv"]
 
@@ -84,17 +83,24 @@ if ConstType:
     A, B = "Alice", "Bob"
 
 def solve():
+    word = str(abs(int(input())))
+    x = Counter(word)
+    print(len(x))
+
+def solve1():
     while True:
         word = input()
-        if word == "":
+        if word.strip() == "":
             break
-        x = Counter(word)
-        print(len(x))
-        
+        word = str(abs(int(word)))
+        dict = defaultdict(int)
+        for char in word:
+            dict[char] += 1
+        print(len(dict))
         
     
 if __name__ == "__main__":
-    TEST = 1
+    TEST = II()
     for _ in range(TEST):
-        solve()
+        solve1()
   
