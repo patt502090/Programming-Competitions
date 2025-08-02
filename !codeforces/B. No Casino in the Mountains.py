@@ -25,19 +25,6 @@ if ImportType:
         whitespace,
     )
 
-# print(string.ascii_lowercase)  # abcdefghijklmnopqrstuvwxyz
-# print(string.ascii_uppercase)  # ABCDEFGHIJKLMNOPQRSTUVWXYZ
-# print(string.digits)           # 0123456789
-# print(string.punctuation)      # !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
-# print(string.printable)        # รวมหมดตัวที่พิมพ์ได้
-# print(string.whitespace)       # ช่องว่าง, \t, \n, ฯลฯ
-
-# import itertools
-# a = [3, 4, 1, 7, 9, 1]
-
-# res = list(itertools.accumulate(a))
-# print(res)
-
 
 if InputType:
     input = lambda: sys.stdin.readline().rstrip("\r\n")
@@ -78,7 +65,8 @@ if FunctinoType:
         # math_obj = Math()
         # combination = math_obj.comb(5, 2)  # คำนวณค่า C(5, 2) = 10
         # permutation = math_obj.perm(5, 2)  # คำนวณค่า P(5, 2) = 20
-        
+
+
 if ConstType:
     MOD1, MOD9 = 10**9 + 7, 998244353
     RD = random.randint(MOD1, MOD1 << 1)
@@ -96,12 +84,46 @@ if ConstType:
     Y, N = "Yes", "No"
     A, B = "Alice", "Bob"
 
+
 def solve():
-    
-        
-    
+    n, k = MII()
+    a = LII()
+    tmp = 0
+    ans = 0
+    i = 0
+    while i < n:
+        if a[i] == 0:
+            tmp += 1
+        else:
+            tmp = 0
+
+        if tmp == k:
+            ans += 1
+            tmp = 0 
+            i += 1 
+        i += 1 
+
+    print(ans)
+
+# def solve():
+#     n, k = MII()
+#     a = LII()
+#     tmp = 0
+#     ans = 0
+#     for i in range(n):
+#         if a[i] == 0:
+#             tmp += 1
+#         else:
+#             tmp = 0
+
+#         if tmp == k:
+#             ans += 1
+#             tmp = 0
+#             if i + 1 < n:
+#                 a[i + 1] = 1  
+#     print(ans)
+
 if __name__ == "__main__":
     TEST = II()
     for _ in range(TEST):
         solve()
-  

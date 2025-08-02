@@ -32,12 +32,6 @@ if ImportType:
 # print(string.printable)        # รวมหมดตัวที่พิมพ์ได้
 # print(string.whitespace)       # ช่องว่าง, \t, \n, ฯลฯ
 
-# import itertools
-# a = [3, 4, 1, 7, 9, 1]
-
-# res = list(itertools.accumulate(a))
-# print(res)
-
 
 if InputType:
     input = lambda: sys.stdin.readline().rstrip("\r\n")
@@ -97,7 +91,19 @@ if ConstType:
     A, B = "Alice", "Bob"
 
 def solve():
-    
+    n = II()
+    lst = LI()
+    cnt = 0
+    ans = 0
+    for i in range(n):
+        if lst[i] == "(":
+            cnt += 1
+        else:
+            if cnt > 0:
+                cnt -= 1
+            else:
+                ans += 1
+    print(ans)
         
     
 if __name__ == "__main__":
@@ -105,3 +111,4 @@ if __name__ == "__main__":
     for _ in range(TEST):
         solve()
   
+

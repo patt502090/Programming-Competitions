@@ -25,19 +25,6 @@ if ImportType:
         whitespace,
     )
 
-# print(string.ascii_lowercase)  # abcdefghijklmnopqrstuvwxyz
-# print(string.ascii_uppercase)  # ABCDEFGHIJKLMNOPQRSTUVWXYZ
-# print(string.digits)           # 0123456789
-# print(string.punctuation)      # !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
-# print(string.printable)        # รวมหมดตัวที่พิมพ์ได้
-# print(string.whitespace)       # ช่องว่าง, \t, \n, ฯลฯ
-
-# import itertools
-# a = [3, 4, 1, 7, 9, 1]
-
-# res = list(itertools.accumulate(a))
-# print(res)
-
 
 if InputType:
     input = lambda: sys.stdin.readline().rstrip("\r\n")
@@ -97,11 +84,18 @@ if ConstType:
     A, B = "Alice", "Bob"
 
 def solve():
-    
-        
+    n,k = MII()
+    lst = [int(input()) for _ in range(n)]
+    lst.sort(reverse = True)
+    ans = 0
+    while lst:
+        ans += max(lst[:k])
+        del lst[:k]
+    print(ans)
     
 if __name__ == "__main__":
-    TEST = II()
+    TEST =1
     for _ in range(TEST):
         solve()
   
+

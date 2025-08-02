@@ -1848,32 +1848,14 @@ def solve(file=False, infile=None, outfile=None):
     # c = [-1] * n
     # edges = []
     # root = None
-    
-    q = deque(a)
+    prx = prefix_min(a)
+    for i in range(1, n):
+        diff = a[i] - prx[i - 1]
+        if a[i] > prx[i - 1] and (diff >= prx[i - 1]):
+            print("NO")
+            return
 
-    ans = []
-    cnt = 0
-    is_max = True
-    for _ in range(n):
-        if is_max:
-            if q[0] > q[-1]:
-                ans.append("L")
-                q.popleft()
-            else:
-                ans.append("R")
-                q.pop()
-
-        else:
-            if q[0] > q[-1]:
-                ans.append("R")
-                q.pop()
-            else:
-                ans.append("L")
-                q.popleft()
-
-        is_max = not is_max
-
-    print("".join(ans))
+    print("YES")
                 
         
 

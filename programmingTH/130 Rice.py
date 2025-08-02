@@ -25,19 +25,6 @@ if ImportType:
         whitespace,
     )
 
-# print(string.ascii_lowercase)  # abcdefghijklmnopqrstuvwxyz
-# print(string.ascii_uppercase)  # ABCDEFGHIJKLMNOPQRSTUVWXYZ
-# print(string.digits)           # 0123456789
-# print(string.punctuation)      # !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
-# print(string.printable)        # รวมหมดตัวที่พิมพ์ได้
-# print(string.whitespace)       # ช่องว่าง, \t, \n, ฯลฯ
-
-# import itertools
-# a = [3, 4, 1, 7, 9, 1]
-
-# res = list(itertools.accumulate(a))
-# print(res)
-
 
 if InputType:
     input = lambda: sys.stdin.readline().rstrip("\r\n")
@@ -97,11 +84,54 @@ if ConstType:
     A, B = "Alice", "Bob"
 
 def solve():
-    
+    n = II()
+    lst = []
+    for _ in range(n):
+        price,kg = MII()
+        heappush(lst, (price/kg, kg))
+    # print(lst)
+    for _ in range(II()):
+        nd = II()
+        ans = 0
+        while nd > 0:
+            price, kg = heappop(lst)
+            if nd >= kg:
+                ans += price * kg
+                nd -= kg
+            else:
+                ans += price * nd
+                heappush(lst, (price, kg - nd))
+                nd = 0
+
+        print(f"{ans:.3f}")
         
+def solve1():
+    n = II()
+    lst = []
+    for _ in range(n):
+        p, q = MII()
+        price_per_kg = p / q
+        heappush(lst, (price_per_kg, q))
+        
+    m = II()
+    for _ in range(m):
+        nd = II()
+        ans = 0.0
+        while nd > 0:
+            price, kg = heappop(lst)
+            take = min(nd, kg)
+            ans += price * take
+            nd -= take
+            if kg > take:
+                heappush(lst, (price, kg - take))
+        print(f"{ans:.3f}")
+        
+        #wrong test case 10
+
     
 if __name__ == "__main__":
-    TEST = II()
+    TEST = 1
     for _ in range(TEST):
-        solve()
+        solve1()
   
+
