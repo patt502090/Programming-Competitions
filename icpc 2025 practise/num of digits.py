@@ -103,12 +103,20 @@ def solve2():
         word = input()
         if word.strip() == "":
             break
-        print(word)
         word = list(word)
-        print(len(word))
+        word = [int(x) for x in word] 
+        print(sum(word))
+        
+def solve3():
+    while True:
+        word = input()
+        if word.strip() == "":
+            break
+        print(int(word[::-1]))
+        
     
 if __name__ == "__main__":
     TEST = 1
     for _ in range(TEST):
-        solve2()
+        solve3()
   
