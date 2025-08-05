@@ -84,11 +84,25 @@ if ConstType:
     A, B = "Alice", "Bob"
 
 def solve():
-    
+    n = II()
+    arr = LII()
+    arr = Counter(arr)
+    mx = max(arr.values()) 
+    arr = sorted(arr.items(), key=lambda x: x[0])
+    # print(arr)
+    for i,val in arr:
+        if val == mx:
+            print(i, end = " ")
+        
+    # for val arr.values():
+    #     print(val)
+        
+
+        
         
     
 if __name__ == "__main__":
-    TEST = II()
+    TEST = 1
     for _ in range(TEST):
         solve()
   
