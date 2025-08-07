@@ -82,6 +82,24 @@ if ConstType:
     ]  # ->, <-, v, ^, ↘, ↙, ↗, ↖
     Y, N = "Yes", "No"
     A, B = "Alice", "Bob"
+def ckl(i, arr):
+    n = len(arr)
+    cnt = 0
+    for i in range(i,-1,-1):
+        if arr[i][1] - (arr[i][0] - arr[i-1][0]) > 0:
+            cnt += 1
+        else:
+            return cnt
+    return cnt
+    
+def ckr(i, arr):
+    cnt = 0
+    for i in range(i, len(arr) - 1):
+        if arr[i][1] - (arr[i + 1][0] - arr[i][0]) > 0:
+            cnt += 1
+        else:
+            return cnt
+    return cnt
 
 def solve():
     n = II()
@@ -91,7 +109,11 @@ def solve():
         arr.append((X, H))
     print(arr)
     for i in range(n):
-        lst = arr
+        print(f"Index {i}")
+        l = ckl(i,arr)
+        print(l)
+        r = ckr(i,arr)
+        print(r)
         
         
         
