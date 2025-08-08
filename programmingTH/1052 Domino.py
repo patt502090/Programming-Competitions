@@ -82,38 +82,70 @@ if ConstType:
     ]  # ->, <-, v, ^, ↘, ↙, ↗, ↖
     Y, N = "Yes", "No"
     A, B = "Alice", "Bob"
-def ckl(i, arr):
-    n = len(arr)
-    cnt = 0
-    for i in range(i,-1,-1):
-        if arr[i][1] - (arr[i][0] - arr[i-1][0]) > 0:
-            cnt += 1
-        else:
-            return cnt
-    return cnt
     
-def ckr(i, arr):
-    cnt = 0
-    for i in range(i, len(arr) - 1):
-        if arr[i][1] - (arr[i + 1][0] - arr[i][0]) > 0:
+# def ckl(i, arr):
+#     n = len(arr)
+#     cnt = 0
+#     ck = 0
+#     for i in range(i,-1,-1):
+#         if i == 0:
+#             ck = arr[i][1]
+#             continue
+#         if arr[i][1] < arr[i][0] - arr[i-1][0]:
+#             ck = arr[i][1]
+#         elif ck - (arr[i][0] - arr[i-1][0]) > 0:
+#             ck -= arr[i][0] - arr[i-1][0]
+#             cnt += 1
+#         else:
+#             return cnt
+            
+#             # ck = max(arr[i][1] - (arr[i][0] - arr[i-1][0]), ck)
+#     return cnt
+    
+    
+def ckl(i, arr):
+    cnt = 1  
+    ck = arr[i][1]
+    for j in range(i, 0, -1):
+        dist = arr[j][0] - arr[j - 1][0]
+        if ck > dist:
             cnt += 1
+            ck -= dist
         else:
-            return cnt
+            break
+    return cnt
+
+def ckr(i, arr):
+    cnt = 1  
+    ck = arr[i][1]
+    for j in range(i, len(arr) - 1):
+        dist = arr[j + 1][0] - arr[j][0]
+        if ck > dist:
+            cnt += 1
+            ck -= dist
+        else:
+            break
     return cnt
 
 def solve():
     n = II()
-    arr = []
+    arr = [tuple(MII()) for _ in range(n)]
+
+    best = 0
+    direction = "L"
+
     for i in range(n):
-        X,H = MII()
-        arr.append((X, H))
-    print(arr)
-    for i in range(n):
-        print(f"Index {i}")
-        l = ckl(i,arr)
-        print(l)
-        r = ckr(i,arr)
-        print(r)
+        l = ckl(i, arr)
+        if l > best:
+            best = l
+            direction = "L"
+        r = ckr(i, arr)
+        if r > best:
+            best = r
+            direction = "R"
+
+    print(f"{best} {direction}")
+
         
         
         
