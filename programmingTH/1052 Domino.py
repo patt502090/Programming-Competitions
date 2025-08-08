@@ -1,126 +1,59 @@
-ImportType = InputType = ConstType = 1
-DecoratorType = FunctinoType = 1
+n = int(input())
+dominoes = []
 
-if ImportType:
-    import os, sys, random, threading
-    from copy import deepcopy
-    from decimal import Decimal, getcontext
-    from random import randint, choice, shuffle
-    from types import GeneratorType
-    from functools import lru_cache, reduce
-    from bisect import bisect_left, bisect_right
-    from collections import Counter, defaultdict, deque
-    from itertools import accumulate, combinations, permutations
-    from heapq import heapify, heappop, heappush, heappushpop
-    from typing import Generic, Iterable, Iterator, TypeVar, Union, List
-    from string import ascii_lowercase, ascii_uppercase, digits
-    from math import ceil, floor, sqrt, pi, factorial, gcd, log, log10, log2, inf
-    from sys import stdin, stdout, setrecursionlimit
-    from string import (
-        ascii_lowercase,
-        ascii_uppercase,
-        digits,
-        punctuation,
-        printable,
-        whitespace,
-    )
+for _ in range(n):
+    x, h = map(int, input().split())
+    dominoes.append((x, h))
 
+def fall_right(dominoes, start):
+    count = 1
+    reach = dominoes[start][0] + dominoes[start][1]
+    i = start + 1
+    while i < n and dominoes[i][0] < reach:
+        count += 1
+        reach = max(reach, dominoes[i][0] + dominoes[i][1])
+        i += 1
+    return count
 
-if InputType:
-    input = lambda: sys.stdin.readline().rstrip("\r\n")
-    I = lambda: input()
-    II = lambda: int(input())
-    MII = lambda: map(int, input().split())
-    LI = lambda: list(input())
-    LII = lambda: list(map(int, input().split()))
-    GMI = lambda: map(lambda x: int(x) - 1, input().split())
-    LGMI = lambda: list(map(lambda x: int(x) - 1, input().split()))
+def fall_left(dominoes, start):
+    count = 1
+    reach = dominoes[start][0] - dominoes[start][1]
+    i = start - 1
+    while i >= 0 and dominoes[i][0] > reach:
+        count += 1
+        reach = min(reach, dominoes[i][0] - dominoes[i][1])
+        i -= 1
+    return count
 
-if FunctinoType:
+max_fallen = 0
+best_index = 0
+best_dir = 'L'
 
-    class Math:
-        __slots__ = ["mod", "l", "fact", "inv"]
-
-        def __init__(self):
-            self.mod = mod = 10**9 + 7
-            self.l = l = 3 * 10**5 + 5
-            self.fact = fact = [1] * (l + 1)
-            self.inv = inv = [1] * (l + 1)
-            for i in range(1, l + 1):
-                fact[i] = fact[i - 1] * i % mod
-            inv[l] = pow(fact[l], mod - 2, mod)
-            for i in range(l - 1, -1, -1):
-                inv[i] = inv[i + 1] * (i + 1) % mod
-
-        def comb(self, n: int, r: int):  # (Combination) CNR เลขจัดหมู่
-            return (
-                self.fact[n] * self.inv[r] % self.mod * self.inv[n - r] % self.mod
-                if n >= r >= 0
-                else 0
-            )
-
-        def perm(self, n: int, r: int):  # (Permutation) PNR เลขเรียงสับเปลี่ยน
-            return self.fact[n] * self.inv[n - r] % self.mod if n >= r >= 0 else 0
-
-        # math_obj = Math()
-        # combination = math_obj.comb(5, 2)  # คำนวณค่า C(5, 2) = 10
-        # permutation = math_obj.perm(5, 2)  # คำนวณค่า P(5, 2) = 20
-        
-if ConstType:
-    MOD1, MOD9 = 10**9 + 7, 998244353
-    RD = random.randint(MOD1, MOD1 << 1)
-    Direction4 = [(0, 1), (0, -1), (1, 0), (-1, 0)]  # ->, <-, v, ^
-    Direction8 = [
-        (0, 1),
-        (0, -1),
-        (1, 0),
-        (-1, 0),
-        (1, 1),
-        (1, -1),
-        (-1, 1),
-        (-1, -1),
-    ]  # ->, <-, v, ^, ↘, ↙, ↗, ↖
-    Y, N = "Yes", "No"
-    A, B = "Alice", "Bob"
-def ckl(i, arr):
-    n = len(arr)
-    cnt = 0
-    for i in range(i,-1,-1):
-        if arr[i][1] - (arr[i][0] - arr[i-1][0]) > 0:
-            cnt += 1
-        else:
-            return cnt
-    return cnt
+for i in range(n):
+    current_r = fall_right(dominoes, i)
+    current_l = fall_left(dominoes, i)
     
-def ckr(i, arr):
-    cnt = 0
-    for i in range(i, len(arr) - 1):
-        if arr[i][1] - (arr[i + 1][0] - arr[i][0]) > 0:
-            cnt += 1
-        else:
-            return cnt
-    return cnt
-
-def solve():
-    n = II()
-    arr = []
-    for i in range(n):
-        X,H = MII()
-        arr.append((X, H))
-    print(arr)
-    for i in range(n):
-        print(f"Index {i}")
-        l = ckl(i,arr)
-        print(l)
-        r = ckr(i,arr)
-        print(r)
-        
-        
-        
+    if current_r > current_l:
+        current_max = current_r
+        current_dir = 'R'
+    elif current_l > current_r:
+        current_max = current_l
+        current_dir = 'L'
+    else:
+        current_max = current_r
+        current_dir = 'L'
     
-if __name__ == "__main__":
-    TEST = 1
-    for _ in range(TEST):
-        solve()
-  
+    # Update the best overall choice
+    if current_max > max_fallen:
+        max_fallen = current_max
+        best_index = i
+        best_dir = current_dir
+    elif current_max == max_fallen:
+        if i < best_index:
+            best_index = i
+            best_dir = current_dir
+        elif i == best_index:
+            if current_dir == 'L':
+                best_dir = 'L'
 
+print(f"{best_index + 1} {best_dir}")
