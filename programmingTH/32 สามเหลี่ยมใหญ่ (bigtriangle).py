@@ -83,34 +83,25 @@ if ConstType:
     Y, N = "Yes", "No"
     A, B = "Alice", "Bob"
     
-def area(x1,y1,x2,y2,x3,y3):
-    return abs((x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2))/2)
-    
+def area(x1, y1, x2, y2, x3, y3):
+    return abs((x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2)) / 2)
+
 def solve():
     n = II()
-    arr = [tuple(map(int, input().split())) for _ in range(N)]
+    arr = [tuple(map(int, input().split())) for _ in range(n)]
     
-    mx = 0
-    
-    for i in range(N):
-    for j in range(i+1, N):
-        for k in range(j+1, N):
-            ax = area(points[i][0], points[i][1],
-                      points[j][0], points[j][1],
-                      points[k][0], points[k][1])
-            if ax > max_area:
-                max_area = ax
+    mx = 0.0
+    for i in range(n):
+        for j in range(i+1, n):
+            for k in range(j+1, n):
+                ax = area(arr[i][0], arr[i][1],
+                          arr[j][0], arr[j][1],
+                          arr[k][0], arr[k][1])
+                if ax > mx:
+                    mx = ax
+    print(f"{mx:.3f}")
 
-    print(f"{max_area:.3f}")
-
-                
-        
-        
-        
-    
 if __name__ == "__main__":
-    TEST = II()
+    TEST = 1
     for _ in range(TEST):
         solve()
-  
-
