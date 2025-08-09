@@ -21,9 +21,15 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        # ติดตั้ง dependencies ของโปรเจ็กต์ถ้ามี requirements.txt
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip install pylint
+
+    - name: Debug Python files list
+      run: |
+        FILES=$(git ls-files '*.py')
+        echo "=== Python files to lint ==="
+        printf '%s\n' $FILES
+        echo "============================"
 
     - name: Run pylint
       run: |
@@ -31,5 +37,6 @@ jobs:
         if [ -z "$FILES" ]; then
           echo "No Python files to lint."
         else
-          pylint $FILES
+          # ใช้ -- เพื่อบอก pylint ว่าไฟล์ต่อไปนี้ไม่ใช่ options
+          pylint -- $FILES
         fi
