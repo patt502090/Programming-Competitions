@@ -65,7 +65,8 @@ if FunctinoType:
         # math_obj = Math()
         # combination = math_obj.comb(5, 2)  # คำนวณค่า C(5, 2) = 10
         # permutation = math_obj.perm(5, 2)  # คำนวณค่า P(5, 2) = 20
-        
+
+
 if ConstType:
     MOD1, MOD9 = 10**9 + 7, 998244353
     RD = random.randint(MOD1, MOD1 << 1)
@@ -82,24 +83,27 @@ if ConstType:
     ]  # ->, <-, v, ^, ↘, ↙, ↗, ↖
     Y, N = "Yes", "No"
     A, B = "Alice", "Bob"
-    
+
+
 def area(x1, y1, x2, y2, x3, y3):
-    return abs((x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2)) / 2)
+    return abs((x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2)
+
 
 def solve():
     n = II()
     arr = [tuple(map(int, input().split())) for _ in range(n)]
-    
+
     mx = 0.0
     for i in range(n):
-        for j in range(i+1, n):
-            for k in range(j+1, n):
-                ax = area(arr[i][0], arr[i][1],
-                          arr[j][0], arr[j][1],
-                          arr[k][0], arr[k][1])
+        for j in range(i + 1, n):
+            for k in range(j + 1, n):
+                ax = area(
+                    arr[i][0], arr[i][1], arr[j][0], arr[j][1], arr[k][0], arr[k][1]
+                )
                 if ax > mx:
                     mx = ax
     print(f"{mx:.3f}")
+
 
 if __name__ == "__main__":
     TEST = 1
