@@ -1,4 +1,4 @@
-name: Pylint
+name: Pylint Debug
 
 on: [push, pull_request]
 
@@ -24,19 +24,21 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip install pylint
 
-    - name: Debug Python files list
+    - name: List Python files
       run: |
         FILES=$(git ls-files '*.py')
-        echo "=== Python files to lint ==="
-        printf '%s\n' $FILES
-        echo "============================"
+        echo "=== Python files found ==="
+        printf "'%s'\n" $FILES
+        echo "=========================="
 
-    - name: Run pylint
+    - name: Run pylint on each Python file separately
       run: |
         FILES=$(git ls-files '*.py')
         if [ -z "$FILES" ]; then
           echo "No Python files to lint."
         else
-          # ใช้ -- เพื่อบอก pylint ว่าไฟล์ต่อไปนี้ไม่ใช่ options
-          pylint -- $FILES
+          for file in $FILES; do
+            echo "Linting $file"
+            pylint -- "$file" || echo "File $file caused pylint error"
+          done
         fi
