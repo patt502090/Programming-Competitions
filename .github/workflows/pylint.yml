@@ -31,5 +31,5 @@ jobs:
         if [ -z "$FILES" ]; then
           echo "No Python files to lint."
         else
-          pylint $FILES || true
+          pylint $FILES
         fi
