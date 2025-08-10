@@ -17,18 +17,18 @@ def md_list(dir_path, prefix=""):
     for entry in entries:
         full_path = os.path.join(dir_path, entry)
         if os.path.isdir(full_path):
-            lines.append(f"{prefix}├── **{entry}/**")
-            lines.extend(md_list(full_path, prefix + "│   "))
-            lines.append("")  # blank line after folder
+            lines.append(f"{prefix}- **{entry}/**")
+            lines.extend(md_list(full_path, prefix + "  "))
         else:
-            # สร้าง relative path แบบใช้ / และ encode URL
             rel_path = os.path.relpath(full_path, start=".").replace("\\", "/")
-            rel_path = urllib.parse.quote(rel_path)  # encode URL เช่น space => %20
-            lines.append(f'{prefix}├── [{entry}]({rel_path})')
-    if lines and lines[-1] == "":
-        lines.pop()
+            rel_path = urllib.parse.quote(rel_path)
+            lines.append(f'{prefix}- [{entry}]({rel_path})')
     return lines
 
 if __name__ == "__main__":
     lines = md_list(".")
-    print("\n".join(lines))
+    output = "\n".join(lines) 
+
+    with open("README.md", "w", encoding="utf-8") as f:
+        f.write(output + "\n")
+
