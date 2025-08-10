@@ -132,3 +132,13 @@
 ├── [README.md](README.md)
 └── [script_name.py](script_name.py)
 ```
+
+
+├── **!leetcode/**
+│   ├── [127. Word Ladder(debug).py](!leetcode/127.%20Word%20Ladder(debug).py)
+│   ├── [127. Word Ladder.py](!leetcode/127.%20Word%20Ladder.py)
+
+├── **basic/**
+│   ├── [Paulo Plan.py](basic/Paulo%20Plan.py)
+│   ├── [Shortest Path.py](basic/Shortest%20Path.py)
+
