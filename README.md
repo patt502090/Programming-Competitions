@@ -76,6 +76,7 @@
   - 📄 [Word.py](basic/Word.py)
   - 📄 [osu.py](basic/osu.py)
   - 📄 [pop(list).py](basic/pop%28list%29.py)
+  - 📄 [test.py](basic/test.py)
 - 📁 **contestPb-66-08-18/**
   - 📄 [A.Average_of_Data.py](contestPb-66-08-18/A.Average_of_Data.py)
   - 📄 [B. Reverse String.py](contestPb-66-08-18/B.%20Reverse%20String.py)
