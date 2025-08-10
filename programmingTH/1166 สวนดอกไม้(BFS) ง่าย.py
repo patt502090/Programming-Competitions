@@ -26,7 +26,7 @@ def largest_flower_garden(n, m, grid):
                 # mark ช่องรอบๆ (แต่ต้องเช็กขอบตาราง)
                 for di, dj in dirs:
                     ni, nj = i + di, j + dj
-                    if 0 <= ni < n and 0 <= nj < m:
+                    if 0 <= ni < n and 0 <= nj < m: # ไม่ใส่ไว้ index error เอาไว้กับออกขอบ
                         blocked[ni][nj] = True
 
     # 2) เราจะหา connected components ของช่อง '.' ที่ยังไม่ถูก blocked
