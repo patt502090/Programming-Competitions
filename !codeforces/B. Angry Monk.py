@@ -1,8 +1,8 @@
 def solve():
-    n, k = map(int,input().split())
+    n, k = map(int, input().split())
     num = [int(x) for x in input().split()]
     i = count = 0
-    num.sort(reverse = True)
+    num.sort(reverse=True)
     while len(num) > 1:
         if num[i] >= 2:
             j = i + 1
@@ -21,5 +21,7 @@ def solve():
 
     print(num)
     print(count)
+
+
 for _ in range(int(input())):
     solve()

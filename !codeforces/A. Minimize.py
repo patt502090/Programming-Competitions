@@ -6,14 +6,15 @@ def solve():
         ans = []
         word = str(input())
         lst = [str(x) for x in word]
-        for k in range(4):  
+        for k in range(4):
             if lst[k] == "#":
-                ans.append(4-k)
+                ans.append(4 - k)
                 break
-        
+
         results.append(" ".join(map(str, ans)))
 
     print(" ".join(results))
+
 
 for _ in range(int(input())):
     solve()

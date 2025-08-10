@@ -8,7 +8,7 @@ try:
         data.extend(parts)
 except EOFError:
     pass
-xd =[ int(x ) for x in data]
+xd = [int(x) for x in data]
 ck = int(sum(xd) / len(xd))
 cnt = 0
 for x in xd:

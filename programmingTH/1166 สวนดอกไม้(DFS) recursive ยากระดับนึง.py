@@ -1,5 +1,7 @@
 import sys
-sys.setrecursionlimit(10000)  # กัน recursion เกินลิมิต (แต่โจทย์นี้ไม่เกินอยู่แล้วเพราะ 30x30 = 900 ช่อง)
+# กัน recursion เกินลิมิต (แต่โจทย์นี้ไม่เกินอยู่แล้วเพราะ 30x30 = 900 ช่อง)
+sys.setrecursionlimit(10000)
+
 
 def largest_flower_garden_dfs(n, m, grid):
     """
@@ -8,7 +10,8 @@ def largest_flower_garden_dfs(n, m, grid):
     return: ขนาดของพื้นที่ที่ใหญ่ที่สุด (จำนวนช่อง) ที่ใช้ปลูกได้
     """
 
-    # blocked[i][j] = True หมายถึง ช่องนี้ "ใช้ไม่ได้" (เป็นหินหรืออยู่ติดกับหิน)
+    # blocked[i][j] = True หมายถึง ช่องนี้ "ใช้ไม่ได้"
+    # (เป็นหินหรืออยู่ติดกับหิน)
     blocked = [[False] * m for _ in range(n)]
 
     # ทิศทาง 4 ทิศ (บน, ล่าง, ซ้าย, ขวา)

@@ -12,8 +12,9 @@ def solve():
             else:
                 ma -= 1
         ans.append(ma)
-    
-    print(' '.join(map(str,ans)))
- 
+
+    print(' '.join(map(str, ans)))
+
+
 for _ in range(int(input())):
     solve()

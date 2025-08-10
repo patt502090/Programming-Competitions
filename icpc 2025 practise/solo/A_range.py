@@ -11,6 +11,6 @@ except EOFError:
 
 n = int(data[0])
 
-data = list(map(int, data[1:n+1]))
+data = list(map(int, data[1:n + 1]))
 
-print(abs(max(data)  + abs(min(data))))
+print(abs(max(data) + abs(min(data))))
