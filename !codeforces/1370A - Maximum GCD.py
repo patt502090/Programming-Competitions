@@ -1,6 +1,7 @@
 ImportType = InputType = ConstType = 1
 DecoratorType = FunctinoType = 1
 
+
 if ImportType:
     import os, sys, random, threading
     from copy import deepcopy
