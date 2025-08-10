@@ -9,6 +9,6 @@ for _ in range(n):
     while lst:
         ckx = lst.pop()
         if ckx > mn:
-            cnt += 1 
+            cnt += 1
             mn = ckx
     print(f"Case {_+1}: {cnt}")

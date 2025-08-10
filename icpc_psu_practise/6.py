@@ -1,8 +1,8 @@
-n,t = [int(x) for x in input().split()]
+n, t = [int(x) for x in input().split()]
 lst = []
 for i in range(t):
     lst.append(input().split(maxsplit=1))
-lst.sort(reverse = True,key = lambda x: int(x[0]))
+lst.sort(reverse=True, key=lambda x: int(x[0]))
 sum = 0
 for i in range(n):
     sum += int(lst[i][0])
@@ -12,11 +12,9 @@ for i in range(n):
     ans.append(str(lst[i][1]))
 for i in ans[::-1]:
     print(i)
-    
 
 
-
-#============version สั้นๆ by chatgpt================
+# ============version สั้นๆ by chatgpt================
 # n, t = map(int, input().split())
 # lst = [input().split(maxsplit=1) for _ in range(t)]
 

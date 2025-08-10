@@ -5,9 +5,9 @@ N = int(input())
 A = []
 
 for i in range(N):
-  x = int(input())
-  A.append(x)
-  
+    x = int(input())
+    A.append(x)
+
 A.sort()
 
 if N <= 2:

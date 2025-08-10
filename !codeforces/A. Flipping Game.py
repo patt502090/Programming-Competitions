@@ -60,12 +60,12 @@
 #             )
 
 #         def perm(self, n: int, r: int):  # (Permutation) PNR เลขเรียงสับเปลี่ยน
-#             return self.fact[n] * self.inv[n - r] % self.mod if n >= r >= 0 else 0
+# return self.fact[n] * self.inv[n - r] % self.mod if n >= r >= 0 else 0
 
 #         # math_obj = Math()
 #         # combination = math_obj.comb(5, 2)  # คำนวณค่า C(5, 2) = 10
 #         # permutation = math_obj.perm(5, 2)  # คำนวณค่า P(5, 2) = 20
-        
+
 # if ConstType:
 #     MOD1, MOD9 = 10**9 + 7, 998244353
 #     RD = random.randint(MOD1, MOD1 << 1)
@@ -89,11 +89,9 @@
 #     if not 0 in lst:
 #         print(n-1)
 #     else:
-        
-    
+
+
 # if __name__ == "__main__":
 #     TEST = II()
 #     for _ in range(TEST):
 #         solve()
-  
-

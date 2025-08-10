@@ -5,6 +5,6 @@ try:
         for i in n:
             if i.count("e") or i.count("E"):
                 ck += 1
-except:
+except BaseException:
     print(ck)
     pass

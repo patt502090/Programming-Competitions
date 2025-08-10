@@ -5,6 +5,7 @@
 
 from collections import deque
 
+
 def largest_flower_garden(n, m, grid):
     """
     n, m : ขนาดตาราง (จำนวนแถว, จำนวนคอลัมน์)
@@ -26,17 +27,19 @@ def largest_flower_garden(n, m, grid):
                 # mark ช่องรอบๆ (แต่ต้องเช็กขอบตาราง)
                 for di, dj in dirs:
                     ni, nj = i + di, j + dj
-                    if 0 <= ni < n and 0 <= nj < m: # ไม่ใส่ไว้ index error เอาไว้กับออกขอบ
+                    if 0 <= ni < n and 0 <= nj < m:  # ไม่ใส่ไว้ index error เอาไว้กับออกขอบ
                         blocked[ni][nj] = True
 
     # 2) เราจะหา connected components ของช่อง '.' ที่ยังไม่ถูก blocked
     # ใช้ BFS เพื่อเดินสำรวจแต่ละกลุ่มและนับขนาด
-    seen = [[False] * m for _ in range(n)]   # เก็บว่าช่องไหนเคยเข้า BFS แล้ว (visited)
+    # เก็บว่าช่องไหนเคยเข้า BFS แล้ว (visited)
+    seen = [[False] * m for _ in range(n)]
     ans = 0  # เก็บขนาดสูงสุดที่เจอ
 
     for i in range(n):
         for j in range(m):
-            # เงื่อนไขเริ่ม BFS: ต้องเป็นดิน '.' และไม่ blocked และยังไม่เคย seen
+            # เงื่อนไขเริ่ม BFS: ต้องเป็นดิน '.' และไม่ blocked และยังไม่เคย
+            # seen
             if grid[i][j] == '.' and not blocked[i][j] and not seen[i][j]:
                 q = deque()
                 q.append((i, j))

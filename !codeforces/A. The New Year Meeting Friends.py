@@ -1,44 +1,45 @@
-    ImportType = InputType = ConstType = 1
-    DecoratorType = FunctinoType = 1
+ ImportType = InputType = ConstType = 1
+  DecoratorType = FunctinoType = 1
 
+   # print(list(map(sum,zip(*cnt))))
+   # print("YES" if sum(map(sum,zip(*cnt))) == 0 else "NO")
 
-    # print(list(map(sum,zip(*cnt))))
-    # print("YES" if sum(map(sum,zip(*cnt))) == 0 else "NO")
+   # print("YES" if sum(cnt) == 0 else "NO")
 
+   # A. Arrival of the General (NinePon)
+   # def solve():
+   #     n = II()
+   #     lst = LII()
+   #     cnt = 0
+   #     mx = max(lst)
+   #     mn = min(lst)
+   #     i = 0
 
-    # print("YES" if sum(cnt) == 0 else "NO")
+   #     for i in range(n):
+   #         if lst[i] == mx:
+   #             while i > 0:
+   #                 lst[i],lst[i-1] = lst[i-1],lst[i]
+   #                 cnt += 1
+   #                 i -= 1
+   #             break
+   #     for i in range(n-1,-1,-1):
+   #         if lst[i] == mn:
+   #             while i <= n - 1:
+   #                 lst[i],lst[i+1] = lst[i+1],lst[i]
+   #                 i += 1
+   #                 cnt += 1
+   #             break
 
-    # A. Arrival of the General (NinePon)
-    # def solve():
-    #     n = II()
-    #     lst = LII()
-    #     cnt = 0
-    #     mx = max(lst)
-    #     mn = min(lst)
-    #     i = 0
+   #     print(cnt)
 
-    #     for i in range(n):
-    #         if lst[i] == mx:
-    #             while i > 0:
-    #                 lst[i],lst[i-1] = lst[i-1],lst[i]
-    #                 cnt += 1
-    #                 i -= 1
-    #             break
-    #     for i in range(n-1,-1,-1):
-    #         if lst[i] == mn:
-    #             while i <= n - 1:
-    #                 lst[i],lst[i+1] = lst[i+1],lst[i]
-    #                 i += 1
-    #                 cnt += 1
-    #             break
+   # " WUBIWEBAM to "I AM" "
+   # print(' '.join(word.replace("WUB"," ").split()))
 
-    #     print(cnt)
-
-    # " WUBIWEBAM to "I AM" "
-    # print(' '.join(word.replace("WUB"," ").split()))
-
-    if ImportType:
-        import os, sys, random, threading
+   if ImportType:
+        import os
+        import sys
+        import random
+        import threading
         from copy import deepcopy
         from decimal import Decimal, getcontext
         from random import randint, choice, shuffle
@@ -54,14 +55,14 @@
         from sys import stdin, stdout, setrecursionlimit
 
     if InputType:
-        input = lambda: sys.stdin.readline().rstrip("\r\n")
-        I = lambda: input()
-        II = lambda: int(input())
-        MII = lambda: map(int, input().split())
-        LI = lambda: list(input())
-        LII = lambda: list(map(int, input().split()))
-        GMI = lambda: map(lambda x: int(x) - 1, input().split())
-        LGMI = lambda: list(map(lambda x: int(x) - 1, input().split()))
+        def input(): return sys.stdin.readline().rstrip("\r\n")
+        def I(): return input()
+        def II(): return int(input())
+        def MII(): return map(int, input().split())
+        def LI(): return list(input())
+        def LII(): return list(map(int, input().split()))
+        def GMI(): return map(lambda x: int(x) - 1, input().split())
+        def LGMI(): return list(map(lambda x: int(x) - 1, input().split()))
 
     if FunctinoType:
 
@@ -80,19 +81,17 @@
                     inv[i] = inv[i + 1] * (i + 1) % mod
 
             def comb(self, n: int, r: int):  # (Combination) CNR เลขจัดหมู่
-                return (
-                    self.fact[n] * self.inv[r] % self.mod * self.inv[n - r] % self.mod
-                    if n >= r >= 0
-                    else 0
-                )
+                return (self.fact[n] * self.inv[r] %
+                         self.mod * self.inv[n - r] %
+                    self.mod if n >= r >= 0 else 0 )
 
             def perm(self, n: int, r: int):  # (Permutation) PNR เลขเรียงสับเปลี่ยน
-                return self.fact[n] * self.inv[n - r] % self.mod if n >= r >= 0 else 0
+                return self.fact[n] * self.inv[n -
+                                               r] % self.mod if n >= r >= 0 else 0
 
             # math_obj = Math()
             # combination = math_obj.comb(5, 2)  # คำนวณค่า C(5, 2) = 10
             # permutation = math_obj.perm(5, 2)  # คำนวณค่า P(5, 2) = 20
-
 
     if ConstType:
         MOD1, MOD9 = 10**9 + 7, 998244353
@@ -111,7 +110,6 @@
         Y, N = "Yes", "No"
         A, B = "Alice", "Bob"
 
-
     def remove_duplicates(lst):
         seen = set()
         result = []
@@ -122,7 +120,6 @@
                 seen.add(item)
 
         return result
-
 
     #  n = II()
     #     v = sorted(LII())
@@ -146,7 +143,6 @@
 
     #     print(x)
 
-
     # n = II()
     # lst = sorted(LII(),reverse = True)
     # cnt = 0
@@ -162,9 +158,7 @@
     #         else:
     #             ck += lst[i]
 
-
     # print(cnt)
-
 
     def solve():
         x = [int(x) for x in input().split()]
@@ -177,7 +171,7 @@
         )
         # print((abs(x[0] - x[2]) + abs(x[1] - x[2]), abs(x[0] - x[1]) + abs(x[1] - x[2])))
 
-#solution
+# solution
 # *l,=map(int,input().split());print(max(l)-min(l))
 
     if __name__ == "__main__":
@@ -188,4 +182,3 @@
         # print(cnt)
 
         # print(lst.count(max(lst)))
-

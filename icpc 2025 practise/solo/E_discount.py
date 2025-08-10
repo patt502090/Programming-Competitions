@@ -3,7 +3,7 @@ def mxd(n, cases):
     for case in cases:
         count = case[0]
         prices = case[1:]
-        
+
         if count < 4:
             result.append(0)
             continue
@@ -12,9 +12,9 @@ def mxd(n, cases):
         for i in range(0, count, 4):
             if i + 3 < count:
                 total_discount += prices[i + 3]
-        
+
         result.append(total_discount)
-    
+
     return result
 
 

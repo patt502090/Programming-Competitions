@@ -10,6 +10,7 @@ def comp(a, b):
     else:
         return 1
 
+
 def solve():
     n, m = map(int, input().split())
     vec = []
@@ -34,6 +35,7 @@ def solve():
 
     for i in range(n - 1):
         print(vec[i][1], vec[i + 1][1])
+
 
 # main
 t = int(input())

@@ -1,9 +1,11 @@
 def check(e):
-    for i in range(2,e):
+    for i in range(2, e):
         if e % i == 0:
             return False
-        else :
+        else:
             return True
+
+
 n = int(input())
 count = 0
 all = set()
@@ -14,13 +16,12 @@ while True:
             all.add(2)
         if l == 1:
             all.add(1)
-        if check(l) == True:
+        if check(l):
             all.add(l)
     count += len(w)
     if count == n:
         break
-c = list(all)
-c.sort()
+c = sorted(all)
 print(len(c))
 for i in c:
     print(i)

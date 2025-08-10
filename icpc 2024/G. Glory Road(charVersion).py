@@ -19,6 +19,7 @@ def check(lst):
 
     return ''.join(ans)
 
+
 def solve():
     num, ck = I(), []
     for i in range(len(num)):
@@ -26,6 +27,7 @@ def solve():
         if i == len(num) - 1 or num[i] != num[i + 1]:
             print(check(ck), end='')
             ck = []
+
 
 if __name__ == '__main__':
     for _ in range(1):

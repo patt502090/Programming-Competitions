@@ -9,12 +9,13 @@ def solve():
             lst.append((int(year), int(month), int(day), name))
         except EOFError:
             break
-    
+
     if lst:
-        lst.sort()  
+        lst.sort()
         youngest = lst[-1][3]
-        oldest = lst[0][3]    
+        oldest = lst[0][3]
         print(f"{youngest}\n{oldest}")
+
 
 if __name__ == "__main__":
     TEST = 1
