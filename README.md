@@ -2,13 +2,13 @@
 
 ![Banner](https://via.placeholder.com/900x200/4B8BBE/FFFFFF?text=Competitive+Programming+Repo)
 
-> 💻 รวมโค้ดเก่าๆ จากการฝึกเขียนโปรแกรมแข่งขัน เก็บไว้เป็นความทรงจำ และอ้างอิงในอนาคต  
-> 📅 ภาษา: **Python**, **Go**  
-> ✨ มีทั้งโจทย์จาก **ICPC**, **TOI**, **LeetCode**, **Codeforces** และอื่นๆ
+> 💻 A collection of past code from competitive programming practice — kept as a memory and for future reference  
+> 📅 Languages: **Python**, **Go**  
+> ✨ Featuring problems from **ICPC**, **TOI**, **LeetCode**, **Codeforces**, and more
 
 ---
 
-## 📂 โครงสร้างโปรเจกต์
+## 📂 Project Structure
 - 📁 **!codeforces/**
   - 📄 [1370A - Maximum GCD.py](%21codeforces/1370A%20-%20Maximum%20GCD.py)
   - 📄 [2000A.py](%21codeforces/2000A.py)
@@ -179,18 +179,18 @@
 
 ---
 
-## 📊 สถิติภาษา
-![Languages](https://img.shields.io/github/languages/top/USERNAME/REPO?style=for-the-badge)
-![Repo Size](https://img.shields.io/github/repo-size/USERNAME/REPO?color=green&style=for-the-badge)
-![Last Commit](https://img.shields.io/github/last-commit/USERNAME/REPO?style=for-the-badge)
+## 📊 Repository Stats
+![Languages](https://img.shields.io/github/languages/top/patt502090/REPO?style=for-the-badge)
+![Repo Size](https://img.shields.io/github/repo-size/patt502090/REPO?color=green&style=for-the-badge)
+![Last Commit](https://img.shields.io/github/last-commit/patt502090/REPO?style=for-the-badge)
 
 ---
 
-## 💡 วิธีใช้งาน
-1. เปิดไฟล์ที่ต้องการศึกษา
-2. อ่านโค้ดและลองรัน
-3. ปรับปรุงต่อยอดได้ตามต้องการ
+## 💡 How to Use
+1. Open the file you want to explore
+2. Read the code and try running it
+3. Improve, modify, and experiment as you like
 
 ---
 
-⭐ ถ้าชอบกด Star ให้กำลังใจด้วยนะ
+⭐ If you enjoy this repo, consider giving it a Star!
