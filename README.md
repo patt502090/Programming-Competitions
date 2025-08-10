@@ -1,10 +1,11 @@
 # Project
 
 ## โฟลเดอร์และไฟล์ในโปรเจกต์
-
-├── **!leetcode/**
+```
+├── **!leetcode/**\n
 │   ├── [127. Word Ladder(debug).py](!leetcode/127. Word Ladder(debug).py)
 │   └── [127. Word Ladder.py](!leetcode/127. Word Ladder.py)
+
 ├── **.github/**
 │   └── **workflows/**
 │       └── [pylint.yml](.github/workflows/pylint.yml)
@@ -130,4 +131,4 @@
 │   └── [utils_imports.py](template/utils_imports.py)
 ├── [README.md](README.md)
 └── [script_name.py](script_name.py)
-o
+```
