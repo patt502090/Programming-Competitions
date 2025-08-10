@@ -2,7 +2,10 @@ ImportType = InputType = ConstType = 1
 DecoratorType = FunctinoType = 1
 
 if ImportType:
-    import os, sys, random, threading
+    import os
+    import sys
+    import random
+    import threading
     from copy import deepcopy
     from decimal import Decimal, getcontext
     from random import randint, choice, shuffle
@@ -27,14 +30,14 @@ if ImportType:
 
 
 if InputType:
-    input = lambda: sys.stdin.readline().rstrip("\r\n")
-    I = lambda: input()
-    II = lambda: int(input())
-    MII = lambda: map(int, input().split())
-    LI = lambda: list(input())
-    LII = lambda: list(map(int, input().split()))
-    GMI = lambda: map(lambda x: int(x) - 1, input().split())
-    LGMI = lambda: list(map(lambda x: int(x) - 1, input().split()))
+    def input(): return sys.stdin.readline().rstrip("\r\n")
+    def I(): return input()
+    def II(): return int(input())
+    def MII(): return map(int, input().split())
+    def LI(): return list(input())
+    def LII(): return list(map(int, input().split()))
+    def GMI(): return map(lambda x: int(x) - 1, input().split())
+    def LGMI(): return list(map(lambda x: int(x) - 1, input().split()))
 
 if FunctinoType:
 
@@ -53,19 +56,18 @@ if FunctinoType:
                 inv[i] = inv[i + 1] * (i + 1) % mod
 
         def comb(self, n: int, r: int):  # (Combination) CNR เลขจัดหมู่
-            return (
-                self.fact[n] * self.inv[r] % self.mod * self.inv[n - r] % self.mod
-                if n >= r >= 0
-                else 0
-            )
+            return (self.fact[n] * self.inv[r] %
+                    self.mod * self.inv[n - r] %
+                    self.mod if n >= r >= 0 else 0)
 
         def perm(self, n: int, r: int):  # (Permutation) PNR เลขเรียงสับเปลี่ยน
-            return self.fact[n] * self.inv[n - r] % self.mod if n >= r >= 0 else 0
+            return self.fact[n] * self.inv[n -
+                                           r] % self.mod if n >= r >= 0 else 0
 
         # math_obj = Math()
         # combination = math_obj.comb(5, 2)  # คำนวณค่า C(5, 2) = 10
         # permutation = math_obj.perm(5, 2)  # คำนวณค่า P(5, 2) = 20
-        
+
 if ConstType:
     MOD1, MOD9 = 10**9 + 7, 998244353
     RD = random.randint(MOD1, MOD1 << 1)
@@ -83,54 +85,53 @@ if ConstType:
     Y, N = "Yes", "No"
     A, B = "Alice", "Bob"
 
-
     # def solve():
     #     n,q = map(int,input().split())
-        
+
     #     arr = [int(x) for x in input().split()]
-        
+
     #     arrQ = [[int(x) for x in input().split()] for _ in range(q)]
-        
+
     #     ck = defaultdict(int)
-        
+
     #     for s,t in arrQ:
     #         for i in range(s,t+1):
     #             ck[i] += 1
-                
+
     #     arr.sort(reverse = True)
-        
+
     #     arr = deque(arr)
-        
+
     #     sorted_ck = sorted(ck.items(), key=lambda x: x[1], reverse=True)
-        
+
     #     cl = [0] * (n)
-        
+
     #     for i in sorted_ck:
     #         cl[i[0]-1] = arr.popleft()
-            
+
     #     ans = 0
-        
+
     #     final = sorted(sorted_ck,key = lambda x:x[0])
     #     for i in range(len(final)):
-    #         ans += final[i][1] * cl[i]     
+    #         ans += final[i][1] * cl[i]
     #     print(ans)
-        
-      
+
+
 def solve():
-    n,q = map(int,input().split())
+    n, q = map(int, input().split())
     arr = list(map(int, input().split()))
     queries = [tuple(map(int, input().split())) for _ in range(q)]
 
-    diff = [0] * (n+1)
+    diff = [0] * (n + 1)
     for s, t in queries:
-        diff[s-1] += 1
+        diff[s - 1] += 1
         if t < n:
             diff[t] -= 1
 
     for i in range(1, n):
-        diff[i] += diff[i-1]
+        diff[i] += diff[i - 1]
 
-    freq = diff[:-1]  
+    freq = diff[:-1]
 
     arr.sort(reverse=True)
     freq.sort(reverse=True)
@@ -141,10 +142,8 @@ def solve():
 
     print(ans)
 
-    
-    
+
 if __name__ == "__main__":
     TEST = 1
     for _ in range(TEST):
         solve()
-  

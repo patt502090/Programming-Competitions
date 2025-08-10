@@ -1,6 +1,7 @@
 import sys
 from collections import defaultdict, deque
 
+
 def main():
     input = sys.stdin.readline
     n = int(input().strip())
@@ -43,6 +44,7 @@ def main():
 
     print("\n== ผลลัพธ์สุดท้าย ==")
     print(max(dist))
+
 
 if __name__ == "__main__":
     main()

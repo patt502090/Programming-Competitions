@@ -7,13 +7,15 @@ def main():
 
     for _ in range(t):  # วนทำ t รอบ
         n = input()  # จำนวนพนักงานทั้งหมด
-        g = defaultdict(list)  # สร้างกราฟแบบ dictionary ที่เก็บ list (ใช้แทน adjacency list)
+        # สร้างกราฟแบบ dictionary ที่เก็บ list (ใช้แทน adjacency list)
+        g = defaultdict(list)
 
         # รับข้อมูลหัวหน้าของพนักงานแต่ละคน
         for i in range(n):
             s = input()  # s คือหัวหน้าของพนักงาน i+1 (index เริ่มจาก 0)
             if s != -1:
-                g[i + 1].append(s)  # เพิ่มขอบในกราฟ: พนักงาน i+1 ถูกเชื่อมกับหัวหน้า s
+                # เพิ่มขอบในกราฟ: พนักงาน i+1 ถูกเชื่อมกับหัวหน้า s
+                g[i + 1].append(s)
 
         q = []  # queue สำหรับเก็บ node ที่อยู่ระดับล่างสุดใน tree
 
@@ -42,11 +44,13 @@ def main():
 
             q = s  # เตรียม queue สำหรับรอบถัดไป (ลึกลงอีกชั้น)
 
-        # ถ้า h = 0 แปลว่าไม่มีใครมีหัวหน้า → ทุกคน root เองหมด → ต้องมี 1 กลุ่ม
+        # ถ้า h = 0 แปลว่าไม่มีใครมีหัวหน้า → ทุกคน root เองหมด → ต้องมี 1
+        # กลุ่ม
         if h == 0:
             print(1)
         else:
             print(h)
+
 
 # เรียก main() ตอนรัน script
 if __name__ == '__main__':

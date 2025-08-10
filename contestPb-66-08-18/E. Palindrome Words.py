@@ -1,7 +1,10 @@
 ImportType = InputType = ConstType = 1
 DecoratorType = FunctinoType = 1
 if ImportType:
-    import os, sys, random, threading
+    import os
+    import sys
+    import random
+    import threading
     from copy import deepcopy
     from decimal import Decimal, getcontext
     from random import randint, choice, shuffle
@@ -25,16 +28,15 @@ if ImportType:
 # print(string.whitespace)       # ช่องว่าง, \t, \n, ฯลฯ
 
 
-
 if InputType:
-    input = lambda: sys.stdin.readline().rstrip("\r\n")
-    I = lambda: input()
-    II = lambda: int(input())
-    MII = lambda: map(int, input().split())
-    LI = lambda: list(input())
-    LII = lambda: list(map(int, input().split()))
-    GMI = lambda: map(lambda x: int(x) - 1, input().split())
-    LGMI = lambda: list(map(lambda x: int(x) - 1, input().split()))
+    def input(): return sys.stdin.readline().rstrip("\r\n")
+    def I(): return input()
+    def II(): return int(input())
+    def MII(): return map(int, input().split())
+    def LI(): return list(input())
+    def LII(): return list(map(int, input().split()))
+    def GMI(): return map(lambda x: int(x) - 1, input().split())
+    def LGMI(): return list(map(lambda x: int(x) - 1, input().split()))
 
 if FunctinoType:
 
@@ -53,14 +55,13 @@ if FunctinoType:
                 inv[i] = inv[i + 1] * (i + 1) % mod
 
         def comb(self, n: int, r: int):  # (Combination) CNR เลขจัดหมู่
-            return (
-                self.fact[n] * self.inv[r] % self.mod * self.inv[n - r] % self.mod
-                if n >= r >= 0
-                else 0
-            )
+            return (self.fact[n] * self.inv[r] %
+                    self.mod * self.inv[n - r] %
+                    self.mod if n >= r >= 0 else 0)
 
         def perm(self, n: int, r: int):  # (Permutation) PNR เลขเรียงสับเปลี่ยน
-            return self.fact[n] * self.inv[n - r] % self.mod if n >= r >= 0 else 0
+            return self.fact[n] * self.inv[n -
+                                           r] % self.mod if n >= r >= 0 else 0
 
         # math_obj = Math()
         # combination = math_obj.comb(5, 2)  # คำนวณค่า C(5, 2) = 10
@@ -84,10 +85,13 @@ if ConstType:
     Y, N = "Yes", "No"
     A, B = "Alice", "Bob"
 
+
 def palin(word):
     if word == word[::-1]:
         return True
     return False
+
+
 def solve():
     cnt = 0
     lst = []
@@ -98,13 +102,14 @@ def solve():
     for i in range(len(clean_lst)):
         k = clean_lst[i]
         if len(k) > 3:
-            if  palin(k):
+            if palin(k):
                 ans.append(k)
     ans.sort()
     print(len(ans), " ".join(ans))
 
 # while len(data) < n:
 #     data.append()
+
 
 if __name__ == "__main__":
     TEST = 1

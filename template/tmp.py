@@ -12,7 +12,7 @@
 #     mx = max(lst)
 #     mn = min(lst)
 #     i = 0
-        
+
 #     for i in range(n):
 #         if lst[i] == mx:
 #             while i > 0:
@@ -26,9 +26,9 @@
 #                 lst[i],lst[i+1] = lst[i+1],lst[i]
 #                 i += 1
 #                 cnt += 1
-#             break        
+#             break
 
-#     print(cnt)  
+#     print(cnt)
 
 # " WUBIWEBAM to "I AM" "
 # print(' '.join(word.replace("WUB"," ").split()))
@@ -36,10 +36,10 @@
 #  n = II()
 #     v = sorted(LII())
 #     l, r, x = 0, 2000000, -1
-    
+
 #     while l <= r:
 #         rich = l + (r - l) // 2
-#         b = v[:]  
+#         b = v[:]
 #         b[-1] += rich
 #         total_sum = sum(b)
 #         avg_wealth = total_sum / n
@@ -52,45 +52,43 @@
 #             r = rich - 1
 #         else:
 #             l = rich + 1
-            
+
 #     print(x)
 
+# n = II()
+# lst = sorted(LII(),reverse = True)
+# cnt = 0
+# ck = 0
+# for i in range(len(lst)):
+#     if lst[i] > 2 and ck == 0 and lst[i] <= 4:
+#         cnt += 1
+#     else:
+#         ck == lst[i]
+#         if lst[i] + ck > 3 and ck:
+#             cnt += 1
+#             ck = 0
+#         else:
+#             ck += lst[i]
 
-    # n = II()
-    # lst = sorted(LII(),reverse = True)
-    # cnt = 0
-    # ck = 0
-    # for i in range(len(lst)):   
-    #     if lst[i] > 2 and ck == 0 and lst[i] <= 4:
-    #         cnt += 1
-    #     else:
-    #         ck == lst[i]
-    #         if lst[i] + ck > 3 and ck:
-    #             cnt += 1
-    #             ck = 0
-    #         else:
-    #             ck += lst[i]
-            
-            
-    # print(cnt)
-            
+# print(cnt)
+
 
 # def solve():
 #     n = II()
 #     lst = LII()
 #     count = 0
 #     ckMax = float('-inf')
-    
+
 #     count1 = 0
 #     ckMax1 = float('-inf')
-    
+
 #     for i in range(0, n, 2):
 #         ckMax = max(ckMax,lst[i])
 #         count += 1
 #     for i in range(1, n, 2):
 #         ckMax1 = max(ckMax1,lst[i])
 #         count1 += 1
-    
+
 #     print(max(count + ckMax, count1 + ckMax1))
 
 
@@ -104,4 +102,3 @@ def remove_duplicates(lst):
             seen.add(item)
 
     return result
-

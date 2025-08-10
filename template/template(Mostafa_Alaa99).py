@@ -1,7 +1,9 @@
+from collections import deque
+import random
 from collections import defaultdict, OrderedDict, Counter, deque
 from itertools import permutations, combinations, product
 import math
-from pprint import pprint 
+from pprint import pprint
 # from queue import PriorityQueue
 import threading
 import sys
@@ -19,6 +21,7 @@ threading.stack_size(10**6)
 input = sys.stdin.readline
 flush = sys.stdout.flush
 
+
 def lower_bound(nums, target):
     l, r = 0, len(nums) - 1
     while l <= r:
@@ -28,7 +31,8 @@ def lower_bound(nums, target):
         else:
             l = mid + 1
     return l
-    
+
+
 def upper_bound(nums, target):
     l, r = 0, len(nums) - 1
     while l <= r:
@@ -38,7 +42,8 @@ def upper_bound(nums, target):
         else:
             l = mid + 1
     return r
-  
+
+
 def find_prime_factors(n):
     factors = defaultdict(int)
     divisor = 2
@@ -53,32 +58,36 @@ def find_prime_factors(n):
         factors[n] += 1
 
     return factors
- 
+
+
 def find_divisors(n):
     sqrt = math.isqrt(n)
     divs = []
-    for div in range(1, sqrt+1):
+    for div in range(1, sqrt + 1):
         if n % div == 0:
             divs.append(div)
             if div != n // div:
                 divs.append(n // div)
-    
-    # divs.sort()        
+
+    # divs.sort()
     return divs
-    
+
+
 def is_prime(n):
-    if n == 1 or n == 0: return False
+    if n == 1 or n == 0:
+        return False
     sq = math.isqrt(n)
-    for div in range(2, sq+1):
+    for div in range(2, sq + 1):
         if n % div == 0:
             return False
     return True
- 
+
+
 def soe(start, limit):
     # Initialize a boolean array to mark prime numbers
     is_prime = [True] * (limit + 1)
     is_prime[0] = is_prime[1] = False  # 0 and 1 are not primes
-    
+
     # Perform Sieve of Eratosthenes
     for i in range(2, math.isqrt(limit) + 1):
         if is_prime[i]:
@@ -90,17 +99,20 @@ def soe(start, limit):
     for i in range(start, limit + 1):
         if is_prime[i]:
             primes.append(i)
-    
+
     return primes
 
-  
+
 def ceil_division(a, b):
-    return (a+b-1)//b
- 
+    return (a + b - 1) // b
+
+
 def get_triangle_area(x, y):
-    area = 0.5 * (x[0] * (y[1] - y[2]) + x[1] * (y[2] - y[0]) + x[2] * (y[0] - y[1]))
+    area = 0.5 * (x[0] * (y[1] - y[2]) + x[1] *
+                  (y[2] - y[0]) + x[2] * (y[0] - y[1]))
     return area
-    
+
+
 def prefix_sum(arr):
     prx = []
     cur = 0
@@ -109,7 +121,8 @@ def prefix_sum(arr):
         # cur %= m
         prx.append(cur)
     return prx
-  
+
+
 def prefix_max(arr):
     prx = []
     mx = float("-inf")
@@ -118,6 +131,7 @@ def prefix_max(arr):
         prx.append(mx)
     return prx
 
+
 def prefix_min(arr):
     prx = []
     mn = float("inf")
@@ -125,20 +139,23 @@ def prefix_min(arr):
         mn = min(mn, num)
         prx.append(mn)
     return prx
-  
+
+
 def prefixSum2D(a, R, C):
     psa = [[0 for x in range(C)] for y in range(R)]
     psa[0][0] = a[0][0]
-  
+
     for i in range(1, C):
         psa[0][i] = (psa[0][i - 1] + a[0][i])
     for i in range(1, R):
         psa[i][0] = (psa[i - 1][0] + a[i][0])
-  
+
     for i in range(1, R):
         for j in range(1, C):
-            psa[i][j] = (psa[i - 1][j] + psa[i][j - 1] - psa[i - 1][j - 1] + a[i][j])
+            psa[i][j] = (psa[i - 1][j] + psa[i][j - 1] -
+                         psa[i - 1][j - 1] + a[i][j])
     return psa
+
 
 def sum_interval_2d(prx, row1, col1, row2, col2):
     to_remove_first = prx[row1 - 1][col2] if row1 > 0 else 0
@@ -146,60 +163,71 @@ def sum_interval_2d(prx, row1, col1, row2, col2):
     common = prx[row1 - 1][col1 - 1] if (row1 > 0 and col1 > 0) else 0
     return prx[row2][col2] - to_remove_first - to_remove_second + common
 
-    
+
 def sum_interval(prx, start, end):
-    if start > end: return 0
+    if start > end:
+        return 0
     end = min(len(prx) - 1, end)
     start = max(0, start)
-    return prx[end] - prx[start-1] if start > 0 else prx[end]
- 
+    return prx[end] - prx[start - 1] if start > 0 else prx[end]
+
+
 def quadratic_formula(a, b, c):
-    ans1 = (-b + (b**2 - 4*a*c)**0.5) // (2*a)
-    ans2 = (-b - (b**2 - 4*a*c)**0.5) // (2*a)
+    ans1 = (-b + (b**2 - 4 * a * c)**0.5) // (2 * a)
+    ans2 = (-b - (b**2 - 4 * a * c)**0.5) // (2 * a)
     return ans1, ans2
- 
+
+
 def is_between(i1, j1, i2, j2, i3, j3):
     collinear = (j2 - j1) * (i3 - i1) == (j3 - j1) * (i2 - i1)
-    
+
     if not collinear:
         return False
-    
-    within_bounds = (min(i1, i3) <= i2 <= max(i1, i3)) and (min(j1, j3) <= j2 <= max(j1, j3))
-    
+
+    within_bounds = (min(i1, i3) <= i2 <= max(i1, i3)) and (
+        min(j1, j3) <= j2 <= max(j1, j3))
+
     return within_bounds
- 
+
+
 def slope(x1, y1, x2, y2):
-    if x2 == x1: return float("inf")
+    if x2 == x1:
+        return float("inf")
     x = (y2 - y1) / (x2 - x1)
     return x
- 
+
+
 def get_counts(arr):
     counts = defaultdict(int)
     for num in arr:
         counts[num] += 1
     return counts
-  
+
+
 def gcd_arr(arr):
     gcd = arr[0]
     for num in arr:
         gcd = math.gcd(gcd, num)
     return gcd
- 
+
 # CONST = (1 << 31) - 1
- 
+
+
 def lcm(*integers):
     a = integers[0]
     for b in integers[1:]:
-        a = (a * b) // math.gcd (a, b)
+        a = (a * b) // math.gcd(a, b)
     return a
- 
+
+
 def get_inverse(n):
     global CONST
     return n ^ CONST
-  
+
+
 def is_palindrome(arr):
     return arr == arr[::-1]
-  
+
 # def is_kalindrome(arr, x, l, r):
 #     while l <= r:
 #         if arr[l] == arr[r]:
@@ -213,7 +241,8 @@ def is_palindrome(arr):
 #             else:
 #                 return False
 #     return True
- 
+
+
 def suffix_sum(arr):
     sm = 0
     ans = []
@@ -222,6 +251,7 @@ def suffix_sum(arr):
         sm += num
         ans.append(sm)
     return ans[::-1]
+
 
 def suffix_max(arr):
     mx = float("-inf")
@@ -232,7 +262,8 @@ def suffix_max(arr):
         ans.append(mx)
 
     return ans[::-1]
-  
+
+
 def suffix_min(arr):
     mn = float("inf")
     ans = []
@@ -242,6 +273,7 @@ def suffix_min(arr):
         ans.append(mn)
 
     return ans[::-1]
+
 
 def kadanes_algo(arr):
     sm = 0
@@ -255,6 +287,7 @@ def kadanes_algo(arr):
         ans.append(mx)
     return ans
 
+
 def kadanes_algo_neg(arr):
     sm = 0
     mn = float("inf")
@@ -267,11 +300,13 @@ def kadanes_algo_neg(arr):
         ans.append(mn)
     return ans
 
+
 def arithmitic_seq_sum(a, b, n):
     return (n * (a + b)) // 2
-  
+
+
 def geometric_seq_sum(a, b, r):
-    return (b*r - a) // (r - 1)
+    return (b * r - a) // (r - 1)
 
 
 def find_diff_char(forbidden_chars):
@@ -279,13 +314,15 @@ def find_diff_char(forbidden_chars):
         if char not in forbidden_chars:
             return char
     return ""
-  
+
+
 def mod_inverse_euclidean(a, mod):
     g, x, y = extended_gcd(a, mod)
     if g != 1:
         raise ValueError(f"No modular inverse for {a} under mod {mod}")
     else:
         return x % mod
+
 
 def extended_gcd(a, b):
     if a == 0:
@@ -294,13 +331,17 @@ def extended_gcd(a, b):
     x = y1 - (b // a) * x1
     y = x1
     return g, x, y
-    
+
+
 def sum_law(n):
-    if n <= 0: return 0
+    if n <= 0:
+        return 0
     return (n * (n + 1)) // 2
 
+
 def sum_law_diff(l, r):
-    return sum_law(r) - sum_law(l-1)
+    return sum_law(r) - sum_law(l - 1)
+
 
 def factorial(start, n, m):
     while n > 1:
@@ -310,6 +351,7 @@ def factorial(start, n, m):
 
     return start
 
+
 def lcm_arr(arr):
     ans = 1
     for num in arr:
@@ -317,25 +359,26 @@ def lcm_arr(arr):
 
     return ans
 
-def findProductSum(A, n): 
-      
-    # calculating array sum (a1 + a2 ... + an) 
+
+def findProductSum(A, n):
+
+    # calculating array sum (a1 + a2 ... + an)
     array_sum = 0
-    for i in range(0, n, 1): 
-        array_sum = array_sum + A[i] 
-  
-    # calculating square of array sum 
-    # (a1 + a2 + ... + an)^2 
-    array_sum_square = array_sum * array_sum 
-  
-    # calculating a1^2 + a2^2 + ... + an^2 
+    for i in range(0, n, 1):
+        array_sum = array_sum + A[i]
+
+    # calculating square of array sum
+    # (a1 + a2 + ... + an)^2
+    array_sum_square = array_sum * array_sum
+
+    # calculating a1^2 + a2^2 + ... + an^2
     individual_square_sum = 0
-    for i in range(0, n, 1): 
-        individual_square_sum += A[i] * A[i] 
-  
-    # required sum is (array_sum_square - 
-    # individual_square_sum) / 2 
-    return (array_sum_square - 
+    for i in range(0, n, 1):
+        individual_square_sum += A[i] * A[i]
+
+    # required sum is (array_sum_square -
+    # individual_square_sum) / 2
+    return (array_sum_square -
             individual_square_sum) // 2
 
 
@@ -352,28 +395,23 @@ def findProductSum(A, n):
 #             d[j] = min(d[j], d[i] + 1)
 
 
-    
-
-
-
 # print(costs[:20])
-
 # print(costs[:30])
-
 ceil_division
 # def knapsack(k, weights, gains):
 #     n = len(weights)
 #     # Create a DP table with k+1 capacity (0 to k)
 #     dp = [[0] * (k + 1) for _ in range(n + 1)]
-    
+
 #     # Iterate through items
 #     for i in range(1, n + 1):
 #         for w in range(k + 1):
 #             if weights[i-1] <= w:  # If the current item can be included
 #                 dp[i][w] = max(dp[i-1][w], dp[i-1][w - weights[i-1]] + gains[i-1])
 #             else:
-#                 dp[i][w] = dp[i-1][w]  # Cannot include the item, carry forward the previous value
-    
+# dp[i][w] = dp[i-1][w]  # Cannot include the item, carry forward the
+# previous value
+
 #     # The answer will be in dp[n][k], i.e., considering all items and capacity k
 #     return dp[n][k]
 
@@ -381,22 +419,22 @@ ceil_division
 def knapsack_optimized(k, weights, gains):
     n = len(weights)
     dp = [0] * (k + 1)
-    
+
     for i in range(n):
         for w in range(k, weights[i] - 1, -1):
             dp[w] = max(dp[w], dp[w - weights[i]] + gains[i])
-    
+
     return dp[k]
 
 
 def knapsack_optimized_min(k, weights, gains):
     n = len(weights)
     dp = [float("inf")] * (k + 1)
-    
+
     for i in range(n):
         for w in range(k, weights[i] - 1, -1):
             dp[w] = min(dp[w], dp[w - weights[i]] + gains[i])
-    
+
     # print(dp)
     return dp[k]
 
@@ -406,13 +444,13 @@ def knapsack_optimized_min(k, weights, gains):
 #         return 1
 #     if p < 0:
 #         return 0
-    
+
 #     if (p & 1 == 0):
 #         term = power(n, (p >> 1), m) % m
 #         return (term * term) % m
 #     else:
 #         return ((n % m) * power(n, p - 1, m)) % m
-    
+
 
 def power(x, y, mod=MOD):
     res = 1
@@ -432,13 +470,14 @@ def get_diagonals(matrix):
     for j in range(rows):
         diagonal = [matrix[i][i - j] for i in range(j, rows)]
         diagonals.append(diagonal)
-    
+
     # Above
     for j in range(1, cols):
         diagonal = [matrix[i][i + j] for i in range(rows - j)]
         diagonals.append(diagonal)
 
     return diagonals
+
 
 def get_mode(arr):
     arr.sort()
@@ -455,6 +494,7 @@ def get_mode(arr):
             cur_freq = 1
 
     return mode
+
 
 def loop_spiral(matrix, n, m):
 
@@ -478,7 +518,7 @@ def loop_spiral(matrix, n, m):
         top += 1
 
         # print(spiral_order)
-        
+
         # RIGHT COLUMN
         for i in range(top, bottom + 1):
             layer.append(matrix[i][right])
@@ -493,23 +533,20 @@ def loop_spiral(matrix, n, m):
             layer.append(matrix[bottom][i])
             idxes.append([bottom, i])
 
-
         bottom -= 1
 
         # print(spiral_order)
-           
+
         # LEFT COLUMN
         for i in range(bottom, top - 1, -1):
             layer.append(matrix[i][left])
             idxes.append([i, left])
 
-        
         left += 1
         layers.append(layer.copy())
 
-        
-
     return layers, idxes
+
 
 def xor_upto(n):
     if n % 4 == 0:
@@ -521,17 +558,27 @@ def xor_upto(n):
     else:
         return 0
 
+
 def xor_range(l, r):
     return xor_upto(r) ^ xor_upto(l - 1)
 
+
 def read_numbers(infile=None):
-    return list(map(int, input().strip().split())) if infile == None else list(map(int, infile.readline().strip().split()))
+    return list(map(int, input().strip().split())) if infile is None else list(
+        map(int, infile.readline().strip().split()))
+
 
 def read_int(infile=None):
-    return int(eval(input().strip())) if infile == None else int(eval(infile.readline().strip()))
+    return int(
+        eval(
+            input().strip())) if infile is None else int(
+        eval(
+            infile.readline().strip()))
+
 
 def read_str(infile=None):
-    return input().strip() if infile == None else infile.readline().strip()
+    return input().strip() if infile is None else infile.readline().strip()
+
 
 def get_median(numbers):
     if not numbers:
@@ -548,7 +595,8 @@ def get_median(numbers):
         mid1 = numbers[n // 2 - 1]
         mid2 = numbers[n // 2]
         return mid1
-    
+
+
 def factorial_mod(n, m):
     """Calculates n! % m iteratively."""
     result = 1
@@ -556,12 +604,14 @@ def factorial_mod(n, m):
         result = (result * i) % m
     return result
 
+
 def mod_inverse_euclidean(a, m):
     """Calculates modular inverse of a under modulo m using Extended Euclidean algorithm."""
     g, x, y = extended_gcd(a, m)
     if g != 1:
         raise ValueError("Modular inverse does not exist")
     return x % m
+
 
 def extended_gcd(a, b):
     """Helper function to find gcd and coefficients of Bezout's identity."""
@@ -571,6 +621,7 @@ def extended_gcd(a, b):
     x = y1
     y = x1 - (a // b) * y1
     return g, x, y
+
 
 def comb_optimized(n, r, m):
     if n == r or r == 0:
@@ -588,6 +639,7 @@ def comb_optimized(n, r, m):
 
     # Calculate the result
     return (n_fact * r_fact_inv % m) * nr_fact_inv % m
+
 
 def build_full_ones(limit):
     full_ones = []
@@ -631,20 +683,15 @@ def build_full_ones(limit):
 # print(divs)
 
 
-
-
 def log2_ceil(x):
     if x <= 1:
-        return 0 
-    
-    
+        return 0
+
     bits = x.bit_length() - 1
-    
+
     if x == (1 << bits):
         return bits
     return bits + 1
-
-
 
 
 # powers = [1]
@@ -690,12 +737,13 @@ def common(xl1, xl2, xr1, xr2, yl1, yl2, yr1, yr2):
 
     return xlc, ylc, xrc, yrc
 
+
 def mex(arr):
     n = len(arr)
-    present = [False] * (n + 1) 
+    present = [False] * (n + 1)
 
     for num in arr:
-        if 0 <= num <= n:  
+        if 0 <= num <= n:
             present[num] = True
 
     for i in range(n + 1):
@@ -703,6 +751,7 @@ def mex(arr):
             return i
 
     return n + 1
+
 
 def prefix_xor(arr):
     xor_res = 0
@@ -713,11 +762,13 @@ def prefix_xor(arr):
 
     return res
 
+
 def xor_interval(prx, start, end):
-    if start > end: return 0
+    if start > end:
+        return 0
     end = min(len(prx) - 1, end)
     start = max(0, start)
-    return prx[end] ^ prx[start-1] if start > 0 else prx[end]
+    return prx[end] ^ prx[start - 1] if start > 0 else prx[end]
 
 
 def add(a, b, m):
@@ -734,8 +785,10 @@ def add(a, b, m):
 #     return (a * 1LL * b) % MOD;
 # }
 
+
 def mul(a, b, m):
     return ((a % m) * (b % m)) % m
+
 
 def count_children(adj, n, parents):
     num_children = [0] * (n + 1)
@@ -750,7 +803,7 @@ def count_children(adj, n, parents):
 #     """
 #     Computes the multinomial coefficient:
 #     C(n; k1, k2, ..., km) = n! / (k1! * k2! * ... * km!)
-    
+
 #     using an optimized iterative approach to avoid large factorial computations.
 #     """
 #     result = 1
@@ -778,6 +831,7 @@ def compute_factorial_ratio(n, *groups):
 
     return result
 
+
 def count_inversions(arr):
     def merge_sort(arr):
         if len(arr) <= 1:
@@ -800,7 +854,8 @@ def count_inversions(arr):
                 i += 1
             else:
                 merged.append(right[j])
-                inv_count += len(left) - i  # All remaining elements in left are greater
+                # All remaining elements in left are greater
+                inv_count += len(left) - i
                 j += 1
 
         merged += left[i:]
@@ -813,7 +868,6 @@ def count_inversions(arr):
 
 def max_2p(num):
     return num.bit_length() - 1
-
 
 
 class SparseTable:
@@ -840,18 +894,17 @@ class SparseTable:
                 matrix[j][i] = f(left, right)
 
         return matrix
-  
+
     def query(self, l, r):
         length = r - l + 1
         mx_2p = max_2p(length)
         left = self._table[mx_2p][l]
         right = self._table[mx_2p][r - (1 << mx_2p) + 1]
         return self._f(left, right)
-    
+
 
 class FenwickTreeNonIdempotent:
 
-    
     '''
     This is a custom FenwickTree that I made :)  mostafa_alaa99
     '''
@@ -868,7 +921,6 @@ class FenwickTreeNonIdempotent:
 
     def _construct_fenwick_tree(self, a, n, f, inv_f):
 
-
         tree = [0] * n
         prx = []
         cur = 0
@@ -884,19 +936,18 @@ class FenwickTreeNonIdempotent:
                 tree[i] = inv_f(tree[i], prx[start_interval - 1])
 
         return tree
-    
+
     def update(self, k, u):
 
-        # All of them refer to the intervals that will be affected by this update
-        
+        # All of them refer to the intervals that will be affected by this
+        # update
+
         prev = self._a[k]
         # First thing remove prev from all of them
         i = k
         while i < self._n:
             self._fenwick_tree[i] = self._inv_f(self._fenwick_tree[i], prev)
             i += FenwickTreeNonIdempotent.largest_2power_factor(i + 1)
-
-
 
         # Second thing add u to all of them
         i = k
@@ -922,21 +973,21 @@ class FenwickTreeNonIdempotent:
 
         return ans
 
-    def query(self, l, r): 
+    def query(self, l, r):
         ans = self._query_helper(r)
         if l > 0:
             ans = self._inv_f(ans, self._query_helper(l - 1))
 
         return ans
-    
+
 
 class SegmentTreeIdemponent:
-    
+
     def __init__(self, arr, f):
         self._f = f
         self.n = len(arr)
         self.tree = [0] * (2 * self.n)
-        
+
         # Build the tree
         for i in range(self.n):
             self.tree[self.n + i] = arr[i]
@@ -948,7 +999,8 @@ class SegmentTreeIdemponent:
         self.tree[idx] = value  # Update value
         while idx > 1:
             idx //= 2
-            self.tree[idx] = self._f(self.tree[2 * idx], self.tree[2 * idx + 1])
+            self.tree[idx] = self._f(
+                self.tree[2 * idx], self.tree[2 * idx + 1])
 
     def query(self, l, r):
         l += self.n  # Convert to leaf index
@@ -957,12 +1009,12 @@ class SegmentTreeIdemponent:
 
         while l <= r:
             if l % 2 == 1:  # If `l` is a right child
-                if best == None:
+                if best is None:
                     best = self.tree[l]
                 best = self._f(best, self.tree[l])
                 l += 1
             if r % 2 == 0:  # If `r` is a left child
-                if best == None:
+                if best is None:
                     best = self.tree[r]
                 best = self._f(best, self.tree[r])
                 r -= 1
@@ -970,7 +1022,7 @@ class SegmentTreeIdemponent:
             r //= 2
 
         return best
-    
+
 
 def clz(x):  # similar to __builtin_clz(x) in cpp
     # Count Left Zeros
@@ -982,6 +1034,7 @@ def clz(x):  # similar to __builtin_clz(x) in cpp
     # x = 16  # Binary: 00000000 00000000 00000000 00010000
     # print(clz(x))  # Output: 27
 
+
 def ctz(x):  # similar to __builtin_ctz(x) in cpp
     # Count Trailing Zeros
     if x == 0:
@@ -992,19 +1045,18 @@ def ctz(x):  # similar to __builtin_ctz(x) in cpp
     # x = 16  # Binary: 10000
     # print(ctz(x))  # Output: 4
 
+
 def pop_count(x):  # similar to __builtin_popcount(x) in cpp
     return bin(x).count('1')
 
-    
 
 # primes = soe(1, 5890000)
 # facs = [1]
 # for num in range(1, 2*int(1e5) + 2):
 #     facs.append((facs[-1] * num) % MOD)
 
+################################# TREAP ##################################
 
-################################# TREAP #########################################################
-import random
 
 class Node:
     def __init__(self, val):
@@ -1015,16 +1067,21 @@ class Node:
         self.size = 1
         self.sum = val
 
+
 def size(t):
     return t.size if t else 0
+
 
 def getsum(t):
     return t.sum if t else 0
 
+
 def update(t):
-    if not t: return
+    if not t:
+        return
     t.size = 1 + size(t.left) + size(t.right)
     t.sum = t.val + getsum(t.left) + getsum(t.right)
+
 
 def split(t, k):
     if not t:
@@ -1039,6 +1096,7 @@ def split(t, k):
         t.right = left
         update(t)
         return (t, right)
+
 
 def merge(a, b):
     if not a or not b:
@@ -1081,17 +1139,21 @@ class ImplicitTreap:
 
     def inorder(self):
         res = []
+
         def dfs(t):
-            if not t: return
+            if not t:
+                return
             dfs(t.left)
             res.append(t.val)
             dfs(t.right)
         dfs(self.root)
         return res
-    
-##################################################################################
 
-################### SegmentTree Updates ranges ####################################
+##########################################################################
+
+################### SegmentTree Updates ranges ###########################
+
+
 class SegmentTreeRangeUpdate:
     def __init__(self, size):
         self.N = size
@@ -1116,10 +1178,12 @@ class SegmentTreeRangeUpdate:
         l0, r0 = l, r
         while l > 1:
             l >>= 1
-            self.tree[l] = self.tree[l << 1] + self.tree[l << 1 | 1] + self.lazy[l] * (r0 - l0)
+            self.tree[l] = self.tree[l << 1] + \
+                self.tree[l << 1 | 1] + self.lazy[l] * (r0 - l0)
         while r > 1:
             r >>= 1
-            self.tree[r] = self.tree[r << 1] + self.tree[r << 1 | 1] + self.lazy[r] * (r0 - l0)
+            self.tree[r] = self.tree[r << 1] + \
+                self.tree[r << 1 | 1] + self.lazy[r] * (r0 - l0)
 
     def range_add(self, l, r, value):
         """Add value to interval [l, r)"""
@@ -1186,7 +1250,7 @@ class WaveletTree:
             else:
                 right_part.append(val)
                 self.b.append(self.b[-1])
-        
+
         self.left = WaveletTree(left_part, self.lo, mid)
         self.right = WaveletTree(right_part, mid + 1, self.hi)
 
@@ -1198,7 +1262,8 @@ class WaveletTree:
             return r - l + 1
         lcnt = self.b[l]
         rcnt = self.b[r + 1]
-        return self.left.count_leq(lcnt, rcnt - 1, x) + self.right.count_leq(l - lcnt, r - rcnt, x)
+        return self.left.count_leq(
+            lcnt, rcnt - 1, x) + self.right.count_leq(l - lcnt, r - rcnt, x)
 
     def kth(self, l, r, k):
         """Find k-th smallest in [l, r]"""
@@ -1210,9 +1275,11 @@ class WaveletTree:
         if k <= inLeft:
             return self.left.kth(self.b[l], self.b[r + 1] - 1, k)
         else:
-            return self.right.kth(l - self.b[l], r - self.b[r + 1] + 1, k - inLeft)
+            return self.right.kth(
+                l - self.b[l], r - self.b[r + 1] + 1, k - inLeft)
 
 ##########################################################
+
 
 class Heap:
     def __init__(self, is_min_heap=True):
@@ -1251,9 +1318,13 @@ class Heap:
             left = 2 * i + 1
             right = 2 * i + 2
 
-            if left < n and self.compare(self.data[left][0], self.data[smallest][0]):
+            if left < n and self.compare(
+                    self.data[left][0],
+                    self.data[smallest][0]):
                 smallest = left
-            if right < n and self.compare(self.data[right][0], self.data[smallest][0]):
+            if right < n and self.compare(
+                    self.data[right][0],
+                    self.data[smallest][0]):
                 smallest = right
             if smallest == i:
                 break
@@ -1266,6 +1337,7 @@ class Heap:
     def is_empty(self):
         return len(self.data) == 0
 
+
 class DualPriorityQueue:
     def __init__(self):
         self.min_heap = Heap(is_min_heap=True)
@@ -1274,7 +1346,7 @@ class DualPriorityQueue:
         self.counter = 0    # unique id per insertion
 
     def insert(self, value):
-        
+
         uid = self.counter
         self.min_heap.push((value, uid))
         self.max_heap.push((value, uid))
@@ -1315,7 +1387,6 @@ class DualPriorityQueue:
         return len(self.valid) == 0
 
 
-
 def get_connected_components(adj_list):
     n = len(adj_list)
     visited = [False] * n
@@ -1341,38 +1412,38 @@ def get_connected_components(adj_list):
 
 
 class DSU:
-	def __init__(self, size: int) -> None:
-		self.parents = [i for i in range(size)]
-		self.sizes = [1 for _ in range(size)]
+    def __init__(self, size: int) -> None:
+        self.parents = [i for i in range(size)]
+        self.sizes = [1 for _ in range(size)]
 
-	def find(self, x: int) -> int:
-		""":return: the "representative" node in x's component"""
-		if self.parents[x] == x:
-			return x
-		self.parents[x] = self.find(self.parents[x])
-		return self.parents[x]
+    def find(self, x: int) -> int:
+        """:return: the "representative" node in x's component"""
+        if self.parents[x] == x:
+            return x
+        self.parents[x] = self.find(self.parents[x])
+        return self.parents[x]
 
-	def unite(self, x: int, y: int) -> bool:
-		""":return: whether the merge changed connectivity"""
-		x_root = self.find(x)
-		y_root = self.find(y)
-		if x_root == y_root:
-			return False
+    def unite(self, x: int, y: int) -> bool:
+        """:return: whether the merge changed connectivity"""
+        x_root = self.find(x)
+        y_root = self.find(y)
+        if x_root == y_root:
+            return False
 
-		if self.sizes[x_root] < self.sizes[y_root]:
-			x_root, y_root = y_root, x_root
+        if self.sizes[x_root] < self.sizes[y_root]:
+            x_root, y_root = y_root, x_root
 
-		self.parents[y_root] = x_root
-		self.sizes[x_root] += self.sizes[y_root]
-		return True
+        self.parents[y_root] = x_root
+        self.sizes[x_root] += self.sizes[y_root]
+        return True
 
-	def connected(self, x: int, y: int) -> bool:
-		""":return: whether x and y are in the same connected component"""
-		return self.find(x) == self.find(y)
+    def connected(self, x: int, y: int) -> bool:
+        """:return: whether x and y are in the same connected component"""
+        return self.find(x) == self.find(y)
 
 
 def minSwaps(a, b):
-    
+
     # Store index of elements in 'a'
     pos = [0] * (len(a) + 1)
     for i in range(len(a)):
@@ -1383,7 +1454,7 @@ def minSwaps(a, b):
     n = len(a)
 
     while i < n:
-        
+
         # If element is not in the correct position, swap it
         if a[i] != b[i]:
             swap_idx = pos[b[i]]
@@ -1394,7 +1465,7 @@ def minSwaps(a, b):
 
             # Re-evaluate current index to check correctness
             i -= 1
-        
+
         i += 1
 
     return swaps
@@ -1403,7 +1474,7 @@ def minSwaps(a, b):
 def is_perfect_square(num):
     sq = math.isqrt(num)
     return (sq * sq) == num
-    
+
 
 def lsb(num):
     if num == 0:
@@ -1416,41 +1487,45 @@ def msb(num):
         return 0
     return num.bit_length() - 1
 
+
 def is_sum_law(n):
     if n < 0:
         return False
     if n == 0:
         return True
-    
+
     # Solve x(x + 1)/2 = n => x^2 + x - 2n = 0
     discriminant = 1 + 8 * n
     sqrt_d = int(math.isqrt(discriminant))
-    
+
     # Check if discriminant is a perfect square
     if sqrt_d * sqrt_d != discriminant:
         return False
-    
+
     # Check if (-1 + sqrt_d) is divisible by 2
     x = (-1 + sqrt_d)
     return x % 2 == 0
 
+
 def count_children(adj, parents):
     num_children = [-1] * len(adj)
+
     def calc_num_children(node):
         ans = 0
-        if num_children[node] != -1: return num_children[node]
+        if num_children[node] != -1:
+            return num_children[node]
         for child in adj[node]:
             if child != parents[child]:
                 ans += (1 + calc_num_children(child))
 
         num_children[node] = ans
         return ans
-    
+
     calc_num_children(0)
     return num_children
 
 
-####################################### Binary Lifting ########################################################
+####################################### Binary Lifting ###################
 class Binary_Lifting:
 
     def __init__(self, adj):
@@ -1473,7 +1548,8 @@ class Binary_Lifting:
         # print("depth in build", self.depth)
         for level in range(1, 25):
             for node in range(1, n + 1):
-                self.mat[node][level] = self.mat[self.mat[node][level - 1]][level - 1]
+                self.mat[node][level] = self.mat[self.mat[node]
+                                                 [level - 1]][level - 1]
 
     def move(self, node, k):
         for level in range(25 - 1, -1, -1):
@@ -1482,28 +1558,24 @@ class Binary_Lifting:
 
         return node
 
-
-
     def lca(self, a, b):
         if self.depth[a] < self.depth[b]:
             a, b = b, a
 
         a = self.move(a, self.depth[a] - self.depth[b])
-        if a == b: return a
+        if a == b:
+            return a
         # print("after move", a, b)
         for level in range(25 - 1, -1, -1):
             if self.mat[a][level] != self.mat[b][level]:
                 a = self.mat[a][level]
                 b = self.mat[b][level]
-                
+
         # print("debug", a, b)
         return self.mat[a][0]
-        
-        
 
 
-
-###############################################################################################################
+##########################################################################
 
 
 def countSubarraysEqualsK(arr, k):
@@ -1540,9 +1612,7 @@ def same_digits_same_pos(n1, n2):
     return ans
 
 
-
-
-########################################################################################
+##########################################################################
 class TreeDistance:
     def __init__(self, n):
         self.n = n
@@ -1573,7 +1643,8 @@ class TreeDistance:
         if self.depth[u] < self.depth[v]:
             u, v = v, u
         for i in reversed(range(self.LOG)):
-            if self.up[u][i] != -1 and self.depth[self.up[u][i]] >= self.depth[v]:
+            if self.up[u][i] != - \
+                    1 and self.depth[self.up[u][i]] >= self.depth[v]:
                 u = self.up[u][i]
         if u == v:
             return u
@@ -1587,14 +1658,13 @@ class TreeDistance:
         lca_node = self.lca(u, v)
         return self.depth[u] + self.depth[v] - 2 * self.depth[lca_node]
 
-########################################################################################
+##########################################################################
 
-from collections import deque
 
 def find_tree_diameter_ends(n, adj):
     """
     Returns the two endpoints of the diameter of the tree.
-    
+
     Parameters:
         n    : number of nodes (0-indexed)
         adj  : adjacency list of the tree
@@ -1627,6 +1697,7 @@ def find_tree_diameter_ends(n, adj):
     # v is the other end of the diameter
     return u, v
 
+
 def is_valid_brackets(st):
     stack = []
     for i in range(len(st)):
@@ -1637,7 +1708,7 @@ def is_valid_brackets(st):
                 stack.pop()
             else:
                 return False
-            
+
     return not stack
 
 
@@ -1658,12 +1729,12 @@ def precomp_facts(mx):
         inv_fac[i] = inv_fac[i + 1] * (i + 1) % MOD
 
     return fac, inv_fac
-    
+
 
 # def C(n, k):
 #     if k < 0 or k > n:
 #         return 0
-    
+
 #     return fac[n] * inv_fac[k] % MOD * inv_fac[n - k] % MOD
 
 
@@ -1673,25 +1744,25 @@ def precomp_facts(mx):
 #     return lucas(n // MOD, k // MOD) * C(n % MOD, k % MOD) % MOD
 
 # def nCrModpDP(n, r, p):
-    
+
 #     # The array C is going to store
 #     # last row of pascal triangle
-#     # at the end. And last entry 
+#     # at the end. And last entry
 #     # of last row is nCr
 #     C = [0] * (n + 1)
 
 #     # Top row of Pascal Triangle
 #     C[0] = 1
 
-#     # One by constructs remaining 
-#     # rows of Pascal Triangle from 
+#     # One by constructs remaining
+#     # rows of Pascal Triangle from
 #     # top to bottom
 #     for i in range(1, (n + 1)):
-        
-#         # Fill entries of current 
+
+#         # Fill entries of current
 #         # row using previous row
 #         # values
-#         j = min(i, r); 
+#         j = min(i, r);
 #         while(j > 0):
 #             C[j] = (C[j] + C[j - 1]) % p
 #             j -= 1
@@ -1699,29 +1770,28 @@ def precomp_facts(mx):
 
 
 # def nCrModpLucas(n, r, p):
-    
+
 #     # Base case
 #     if (r == 0):
 #         return 1
-        
+
 #     # Compute last digits of n
 #     # and r in base p
 #     ni = int(n % p)
 #     ri = int(r % p)
-        
-#     # Compute result for last digits 
-#     # computed above, and for remaining 
-#     # digits. Multiply the two results 
-#     # and compute the result of 
+
+#     # Compute result for last digits
+#     # computed above, and for remaining
+#     # digits. Multiply the two results
+#     # and compute the result of
 #     # multiplication in modulo p.
 #     # Last digits of n and r
-#     return (nCrModpLucas(int(n / p), int(r / p), p) * 
+#     return (nCrModpLucas(int(n / p), int(r / p), p) *
 #             nCrModpDP(ni, ri, p)) % p; # Remaining digits
 
 
 # primes = soe(1, 1000007)
 # fac, inv_fac = precomp_facts(1000007)
-
 
 
 class DoubleHashedString:
@@ -1742,18 +1812,21 @@ class DoubleHashedString:
         self._hash2 = [0] * (len(s) + 1)
 
         for i in range(len(s)):
-            self._hash1[i + 1] = (self._hash1[i] * self.B1 + ord(s[i])) % self.M1
-            self._hash2[i + 1] = (self._hash2[i] * self.B2 + ord(s[i])) % self.M2
+            self._hash1[i + 1] = (self._hash1[i] *
+                                  self.B1 + ord(s[i])) % self.M1
+            self._hash2[i + 1] = (self._hash2[i] *
+                                  self.B2 + ord(s[i])) % self.M2
 
     def get_hash(self, start: int, end: int):
         """Returns a tuple (hash1, hash2) for s[start:end+1]"""
         len_seg = end - start + 1
 
-        raw1 = (self._hash1[end + 1] - self._hash1[start] * self._pow1[len_seg]) % self.M1
-        raw2 = (self._hash2[end + 1] - self._hash2[start] * self._pow2[len_seg]) % self.M2
+        raw1 = (self._hash1[end + 1] - self._hash1[start]
+                * self._pow1[len_seg]) % self.M1
+        raw2 = (self._hash2[end + 1] - self._hash2[start]
+                * self._pow2[len_seg]) % self.M2
 
         return (raw1, raw2)
-
 
 
 class DoubleAnagramHasher:
@@ -1776,7 +1849,8 @@ class DoubleAnagramHasher:
 
     def get_hash(self, l: int, r: int):
         """Returns a double hash for the multiset (anagram) in s[l:r+1]"""
-        freq = [self.prefix_freq[r + 1][i] - self.prefix_freq[l][i] for i in range(26)]
+        freq = [self.prefix_freq[r + 1][i] - self.prefix_freq[l][i]
+                for i in range(26)]
 
         h1 = 0
         h2 = 0
@@ -1787,13 +1861,12 @@ class DoubleAnagramHasher:
         return (h1, h2)
 
 
-
 class RollingHasher:
-    def __init__(self, base=None, mod=10**9+7):
+    def __init__(self, base=None, mod=10**9 + 7):
         self.mod = mod
         self.base = base if base is not None else random.randint(256, 10000)
         self.pow = [1]
-    
+
     def extend_pow(self, n):
         while len(self.pow) <= n:
             self.pow.append((self.pow[-1] * self.base) % self.mod)
@@ -1802,17 +1875,16 @@ class RollingHasher:
         self.extend_pow(len(s))
         prefix = [0] * (len(s) + 1)
         for i in range(len(s)):
-            prefix[i+1] = (prefix[i] * self.base + ord(s[i])) % self.mod
+            prefix[i + 1] = (prefix[i] * self.base + ord(s[i])) % self.mod
         return prefix
 
     def get_hash(self, prefix, l, r):
         length = r - l + 1
-        return (prefix[r+1] - prefix[l] * self.pow[length]) % self.mod
-
+        return (prefix[r + 1] - prefix[l] * self.pow[length]) % self.mod
 
 
 def xor_hashing(arr, hash_vals):
-    
+
     prx_zor = []
     cur_zor = 0
     unique = set()
@@ -1828,13 +1900,13 @@ def xor_hashing(arr, hash_vals):
 
 def solve(file=False, infile=None, outfile=None):
     alpha = "abcdefghijklmnopqrstuvwxyz"
-    
-    #######################################################################################
-    #######################################################################################
-    ################################ Start Core Code ######################################
-    #######################################################################################
-    #######################################################################################
-    
+
+    ##########################################################################
+    ##########################################################################
+    ################################ Start Core Code #########################
+    ##########################################################################
+    ##########################################################################
+
     n = read_int(infile=infile)
     # n, c = read_numbers(infile=infile)
     a = read_numbers()
@@ -1856,23 +1928,12 @@ def solve(file=False, infile=None, outfile=None):
             return
 
     print("YES")
-                
-        
 
-
-    
-
-
-
-    #######################################################################################
-    #######################################################################################
-    ################################ End Core Code ########################################
-    #######################################################################################
-    #######################################################################################
-
-      
-
-
+    ##########################################################################
+    ##########################################################################
+    ################################ End Core Code ###########################
+    ##########################################################################
+    ##########################################################################
 
 
 use_file = False
@@ -1886,7 +1947,7 @@ if use_file:
         for _ in range(t):
             solve(file=True, infile=infile, outfile=outfile)
             # threading.Thread(target=solve).start()
-    
+
 
 else:
     # m = 3
@@ -1899,5 +1960,3 @@ else:
     for _ in range(t):
         solve()
         # threading.Thread(target=solve).start()
-
-

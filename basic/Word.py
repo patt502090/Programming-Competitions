@@ -8,6 +8,5 @@ for i in word:
         Lower += 1
 if Upper > Lower:
     print(''.join(word).upper())
-else :
+else:
     print(''.join(word).lower())
-

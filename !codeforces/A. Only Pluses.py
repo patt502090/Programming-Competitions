@@ -5,5 +5,7 @@ def solve():
         c = A.index(x)
         A[c] += 1
     print(A[0] * A[1] * A[2])
+
+
 for _ in range(int(input())):
     solve()

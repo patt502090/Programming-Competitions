@@ -38,7 +38,10 @@ DecoratorType = FunctinoType = 1
 # print(' '.join(word.replace("WUB"," ").split()))
 
 if ImportType:
-    import os, sys, random, threading
+    import os
+    import sys
+    import random
+    import threading
     from copy import deepcopy
     from decimal import Decimal, getcontext
     from random import randint, choice, shuffle
@@ -54,14 +57,14 @@ if ImportType:
     from sys import stdin, stdout, setrecursionlimit
 
 if InputType:
-    input = lambda: sys.stdin.readline().rstrip("\r\n")
-    I = lambda: input()
-    II = lambda: int(input())
-    MII = lambda: map(int, input().split())
-    LI = lambda: list(input())
-    LII = lambda: list(map(int, input().split()))
-    GMI = lambda: map(lambda x: int(x) - 1, input().split())
-    LGMI = lambda: list(map(lambda x: int(x) - 1, input().split()))
+    def input(): return sys.stdin.readline().rstrip("\r\n")
+    def I(): return input()
+    def II(): return int(input())
+    def MII(): return map(int, input().split())
+    def LI(): return list(input())
+    def LII(): return list(map(int, input().split()))
+    def GMI(): return map(lambda x: int(x) - 1, input().split())
+    def LGMI(): return list(map(lambda x: int(x) - 1, input().split()))
 
 if FunctinoType:
 
@@ -80,14 +83,13 @@ if FunctinoType:
                 inv[i] = inv[i + 1] * (i + 1) % mod
 
         def comb(self, n: int, r: int):  # (Combination) CNR เลขจัดหมู่
-            return (
-                self.fact[n] * self.inv[r] % self.mod * self.inv[n - r] % self.mod
-                if n >= r >= 0
-                else 0
-            )
+            return (self.fact[n] * self.inv[r] %
+                    self.mod * self.inv[n - r] %
+                    self.mod if n >= r >= 0 else 0)
 
         def perm(self, n: int, r: int):  # (Permutation) PNR เลขเรียงสับเปลี่ยน
-            return self.fact[n] * self.inv[n - r] % self.mod if n >= r >= 0 else 0
+            return self.fact[n] * self.inv[n -
+                                           r] % self.mod if n >= r >= 0 else 0
 
         # math_obj = Math()
         # combination = math_obj.comb(5, 2)  # คำนวณค่า C(5, 2) = 10
@@ -188,7 +190,7 @@ def solve():
                         ans_odd += "#"
                     else:
                         ans_odd += "."
-                    
+
             print(ans_odd)
             ans_odd = ""
             ck = not ck
