@@ -1,7 +1,7 @@
 # Project
 
 ## โฟลเดอร์และไฟล์ในโปรเจกต์
-```
+
 ├── **!leetcode/**\n
 │   ├── [127. Word Ladder(debug).py](!leetcode/127. Word Ladder(debug).py)
 │   └── [127. Word Ladder.py](!leetcode/127. Word Ladder.py)
@@ -131,7 +131,7 @@
 │   └── [utils_imports.py](template/utils_imports.py)
 ├── [README.md](README.md)
 └── [script_name.py](script_name.py)
-```
+
 
 
 ├── **!leetcode/**
