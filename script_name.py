@@ -4,8 +4,10 @@ import urllib.parse
 # Folders and files to ignore
 IGNORE_DIRS = {'.git', '.cph', 'script_name.py', '__pycache__'}
 
+
 def should_ignore(name):
     return name in IGNORE_DIRS or name.startswith('.')
+
 
 def md_list(dir_path, prefix=""):
     lines = []
@@ -26,14 +28,15 @@ def md_list(dir_path, prefix=""):
             lines.append(f'{prefix}- 📄 [{entry}]({rel_path})')
     return lines
 
+
 if __name__ == "__main__":
     # README header
     header = """# 🏆 Competitive Programming Archive
 
 ![Banner](https://via.placeholder.com/900x200/4B8BBE/FFFFFF?text=Competitive+Programming+Repo)
 
-> 💻 A collection of past code from competitive programming practice — kept as a memory and for future reference  
-> 📅 Languages: **Python**, **Go**  
+> 💻 A collection of past code from competitive programming practice — kept as a memory and for future reference
+> 📅 Languages: **Python**, **Go**
 > ✨ Featuring problems from **ICPC**, **TOI**, **LeetCode**, **Codeforces**, and more
 
 ---
