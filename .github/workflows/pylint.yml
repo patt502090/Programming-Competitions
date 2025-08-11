@@ -2,58 +2,71 @@ name: Pylint and Autopep8
 
 on: [push, pull_request]
 
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: autopep8-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   lint-and-format:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.8", "3.9", "3.10"]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v4
-      with:
-        python-version: ${{ matrix.python-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        pip install pylint
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install pylint
 
-    - name: List Python files
-      run: |
-        FILES=$(git ls-files '*.py')
-        echo "=== Python files found ==="
-        printf "'%s'\n" $FILES
-        echo "=========================="
+      - name: List Python files
+        run: |
+          FILES=$(git ls-files '*.py')
+          echo "=== Python files found ==="
+          printf "'%s'\n" $FILES
+          echo "=========================="
 
-    - name: Run pylint on each Python file separately
-      run: |
-        FILES=$(git ls-files '*.py')
-        if [ -z "$FILES" ]; then
-          echo "No Python files to lint."
-        else
-          for file in $FILES; do
-            echo "Linting $file"
-            pylint -- "$file" || echo "File $file caused pylint error"
-          done
-        fi
+      - name: Run pylint (continue on file errors)
+        run: |
+          FILES=$(git ls-files '*.py')
+          if [ -z "$FILES" ]; then
+            echo "No Python files to lint."
+          else
+            for file in $FILES; do
+              echo "Linting $file"
+              pylint -- "$file" || echo "File $file caused pylint error"
+            done
+          fi
 
-    - name: autopep8
-      uses: peter-evans/autopep8@v2
-      with:
-        args: --recursive --in-place --aggressive --aggressive .
+      - name: autopep8 (in-place)
+        uses: peter-evans/autopep8@v2
+        with:
+          args: --recursive --in-place --aggressive --aggressive .
 
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        commit-message: autopep8 action fixes
-        title: Fixes by autopep8 action
-        body: This is an auto-generated PR with fixes by autopep8.
-        labels: autopep8, automated pr
-        branch: autopep8-patches
+      - name: Create Pull Request with formatting fixes
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "autopep8 action fixes [skip ci]"
+          title: "Fixes by autopep8 action"
+          body: "This is an auto-generated PR with fixes by autopep8."
+          labels: autopep8, automated pr
+          branch: autopep8-patches
+          branch-suffix: timestamp
+          delete-branch: true
