@@ -45,6 +45,7 @@
   - 📄 [B. Index and Maximum Value.py](%21codeforces/B.%20Index%20and%20Maximum%20Value.py)
   - 📄 [B. No Casino in the Mountains.py](%21codeforces/B.%20No%20Casino%20in%20the%20Mountains.py)
   - 📄 [B. Sale.py](%21codeforces/B.%20Sale.py)
+  - 📄 [B. Sort the Array.py](%21codeforces/B.%20Sort%20the%20Array.py)
   - 📄 [B. T-primes.py](%21codeforces/B.%20T-primes.py)
   - 📄 [B. Turtle and Piggy Are Playing a Game 2.py](%21codeforces/B.%20Turtle%20and%20Piggy%20Are%20Playing%20a%20Game%202.py)
   - 📄 [B. Two Buttons(BFS).py](%21codeforces/B.%20Two%20Buttons%28BFS%29.py)
