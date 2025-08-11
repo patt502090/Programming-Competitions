@@ -181,9 +181,9 @@
 ---
 
 ## 📊 Repository Stats
-![Languages](https://img.shields.io/github/languages/top/patt502090/REPO?style=for-the-badge)
-![Repo Size](https://img.shields.io/github/repo-size/patt502090/REPO?color=green&style=for-the-badge)
-![Last Commit](https://img.shields.io/github/last-commit/patt502090/REPO?style=for-the-badge)
+![Languages](https://img.shields.io/github/languages/top/patt502090/neural-comprog?style=for-the-badge)
+![Repo Size](https://img.shields.io/github/repo-size/patt502090/neural-comprog?color=green&style=for-the-badge)
+![Last Commit](https://img.shields.io/github/last-commit/patt502090/neural-comprog?style=for-the-badge)
 
 ---
 
