@@ -1,13 +1,24 @@
-name: Pylint and Autopep8
+name: CI (Lint/Format & Update README)
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'README.md'
+      - 'script_name.py'
+      - '**/*.py'
+      - '.github/workflows/ci.yml'
+  pull_request:
+    paths:
+      - '**/*.py'
+      - '.github/workflows/ci.yml'
 
 permissions:
   contents: write
   pull-requests: write
 
 concurrency:
-  group: autopep8-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -80,8 +91,31 @@ jobs:
           pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
           merge-method: squash
 
-      - name: Enable auto-merge via GH CLI
-        if: steps.cpr.outputs.pull-request-operation == 'created' || steps.cpr.outputs.pull-request-operation == 'updated'
-        run: gh pr merge --auto --squash ${{ steps.cpr.outputs.pull-request-number }}
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  update-readme:
+    # ให้รัน "หลัง" lint-and-format เสมอ
+    needs: lint-and-format
+    # ให้ทำงานเฉพาะเหตุการณ์ push เท่านั้น (PR ไม่ต้องอัปเดต README)
+    if: github.event_name == 'push' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run script to update README
+        run: |
+          python script_name.py
+
+      - name: Commit and push changes (skip ci)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet && echo "No changes to commit" || git commit -m "Auto update README [skip ci]"
+          git push
