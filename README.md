@@ -1,5 +1,6 @@
 # 🏆 Competitive Programming Archive
 
+![Banner](https://via.placeholder.com/900x200/4B8BBE/FFFFFF?text=Competitive+Programming+Repo)
 
 > 💻 A collection of past code from competitive programming practice — kept as a memory and for future reference
 > 📅 Languages: **Python**, **Go**
@@ -63,6 +64,27 @@
 - 📁 **!leetcode/**
   - 📄 [127. Word Ladder(debug).py](%21leetcode/127.%20Word%20Ladder%28debug%29.py)
   - 📄 [127. Word Ladder.py](%21leetcode/127.%20Word%20Ladder.py)
+- 📁 **!programmingTH/**
+  - 📄 [10 Trik.py](%21programmingTH/10%20Trik.py)
+  - 📄 [1052 Domino.py](%21programmingTH/1052%20Domino.py)
+  - 📄 [1056 Man.py](%21programmingTH/1056%20Man.py)
+  - 📄 [1061 Temperature is Rising.py](%21programmingTH/1061%20Temperature%20is%20Rising.py)
+  - 📄 [1075 Worm.py](%21programmingTH/1075%20Worm.py)
+  - 📄 [1080 สามเหลี่ยมอีกครั้ง (triagain).py](%21programmingTH/1080%20%E0%B8%AA%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%AB%E0%B8%A5%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%A1%E0%B8%AD%E0%B8%B5%E0%B8%81%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87%20%28triagain%29.py)
+  - 📄 [11 Modulo.py](%21programmingTH/11%20Modulo.py)
+  - 📄 [1152 FIre(not working).py](%21programmingTH/1152%20FIre%28not%20working%29.py)
+  - 📄 [1166 สวนดอกไม้(BFS) ง่าย.py](%21programmingTH/1166%20%E0%B8%AA%E0%B8%A7%E0%B8%99%E0%B8%94%E0%B8%AD%E0%B8%81%E0%B9%84%E0%B8%A1%E0%B9%89%28BFS%29%20%E0%B8%87%E0%B9%88%E0%B8%B2%E0%B8%A2.py)
+  - 📄 [1166 สวนดอกไม้(DFS) recursive ยากระดับนึง.py](%21programmingTH/1166%20%E0%B8%AA%E0%B8%A7%E0%B8%99%E0%B8%94%E0%B8%AD%E0%B8%81%E0%B9%84%E0%B8%A1%E0%B9%89%28DFS%29%20recursive%20%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B1%E0%B8%9A%E0%B8%99%E0%B8%B6%E0%B8%87.py)
+  - 📄 [13 Seven Dwarves.py](%21programmingTH/13%20Seven%20Dwarves.py)
+  - 📄 [130 Rice.py](%21programmingTH/130%20Rice.py)
+  - 📄 [14 Great Common Divisor.py](%21programmingTH/14%20Great%20Common%20Divisor.py)
+  - 📄 [15 Skocimis.py](%21programmingTH/15%20Skocimis.py)
+  - 📄 [16 Ptice.py](%21programmingTH/16%20Ptice.py)
+  - 📄 [32 สามเหลี่ยมใหญ่ (bigtriangle).py](%21programmingTH/32%20%E0%B8%AA%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%AB%E0%B8%A5%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%A1%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88%20%28bigtriangle%29.py)
+  - 📄 [33 looblike.py](%21programmingTH/33%20looblike.py)
+  - 📄 [Kemija.py](%21programmingTH/Kemija.py)
+  - 📄 [The Final Exam.py](%21programmingTH/The%20Final%20Exam.py)
+  - 📄 [เมืองหลวง (Capital)  1111.py](%21programmingTH/%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B8%AB%E0%B8%A5%E0%B8%A7%E0%B8%87%20%28Capital%29%20%201111.py)
 - 📄 [README.md](README.md)
 - 📁 **TOI-ZERO/**
   - 📄 [A3-028 Minesweeper.py](TOI-ZERO/A3-028%20Minesweeper.py)
@@ -155,23 +177,6 @@
   - 📄 [12.py](oldv/12.py)
   - 📄 [12222.py](oldv/12222.py)
   - 📄 [13.py](oldv/13.py)
-- 📁 **programmingTH/**
-  - 📄 [10 Trik.py](programmingTH/10%20Trik.py)
-  - 📄 [1052 Domino.py](programmingTH/1052%20Domino.py)
-  - 📄 [1056 Man.py](programmingTH/1056%20Man.py)
-  - 📄 [1061 Temperature is Rising.py](programmingTH/1061%20Temperature%20is%20Rising.py)
-  - 📄 [1075 Worm.py](programmingTH/1075%20Worm.py)
-  - 📄 [1080 สามเหลี่ยมอีกครั้ง (triagain).py](programmingTH/1080%20%E0%B8%AA%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%AB%E0%B8%A5%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%A1%E0%B8%AD%E0%B8%B5%E0%B8%81%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87%20%28triagain%29.py)
-  - 📄 [11 Modulo.py](programmingTH/11%20Modulo.py)
-  - 📄 [1152 FIre(not working).py](programmingTH/1152%20FIre%28not%20working%29.py)
-  - 📄 [1166 สวนดอกไม้(BFS) ง่าย.py](programmingTH/1166%20%E0%B8%AA%E0%B8%A7%E0%B8%99%E0%B8%94%E0%B8%AD%E0%B8%81%E0%B9%84%E0%B8%A1%E0%B9%89%28BFS%29%20%E0%B8%87%E0%B9%88%E0%B8%B2%E0%B8%A2.py)
-  - 📄 [1166 สวนดอกไม้(DFS) recursive ยากระดับนึง.py](programmingTH/1166%20%E0%B8%AA%E0%B8%A7%E0%B8%99%E0%B8%94%E0%B8%AD%E0%B8%81%E0%B9%84%E0%B8%A1%E0%B9%89%28DFS%29%20recursive%20%E0%B8%A2%E0%B8%B2%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B1%E0%B8%9A%E0%B8%99%E0%B8%B6%E0%B8%87.py)
-  - 📄 [130 Rice.py](programmingTH/130%20Rice.py)
-  - 📄 [32 สามเหลี่ยมใหญ่ (bigtriangle).py](programmingTH/32%20%E0%B8%AA%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%AB%E0%B8%A5%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%A1%E0%B9%83%E0%B8%AB%E0%B8%8D%E0%B9%88%20%28bigtriangle%29.py)
-  - 📄 [33 looblike.py](programmingTH/33%20looblike.py)
-  - 📄 [Kemija.py](programmingTH/Kemija.py)
-  - 📄 [The Final Exam.py](programmingTH/The%20Final%20Exam.py)
-  - 📄 [เมืองหลวง (Capital)  1111.py](programmingTH/%E0%B9%80%E0%B8%A1%E0%B8%B7%E0%B8%AD%E0%B8%87%E0%B8%AB%E0%B8%A5%E0%B8%A7%E0%B8%87%20%28Capital%29%20%201111.py)
 - 📁 **template/**
   - 📄 [struct.py](template/struct.py)
   - 📄 [template(Mostafa_Alaa99).py](template/template%28Mostafa_Alaa99%29.py)
