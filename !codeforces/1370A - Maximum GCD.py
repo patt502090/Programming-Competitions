@@ -58,7 +58,7 @@ if FunctinoType:
                     self.mod * self.inv[n - r] %
                     self.mod if n >= r >= 0 else 0)
 
-        def perm(self, n: int, r: int):  # (Permutation) PNR เลขเรียงสับเปลี่ยน
+        def perm(self, n: int, r: int):
             return self.fact[n] * self.inv[n -
                                            r] % self.mod if n >= r >= 0 else 0
 
