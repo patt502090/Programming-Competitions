@@ -1,5 +1,7 @@
 # 🏆 Competitive Programming Archive
 
+![Banner](https://via.placeholder.com/900x200/4B8BBE/FFFFFF?text=Competitive+Programming+Repo)
+
 > 💻 A collection of past code from competitive programming practice — kept as a memory and for future reference
 > 📅 Languages: **Python**, **Go**
 > ✨ Featuring problems from **ICPC**, **TOI**, **LeetCode**, **Codeforces**, and more
@@ -56,7 +58,16 @@
   - 📄 [D. This Is the Last Time.py](%21codeforces/D.%20This%20Is%20the%20Last%20Time.py)
   - 📄 [E. G-C-D, Unlucky!.py](%21codeforces/E.%20G-C-D%2C%20Unlucky%21.py)
   - 📁 **contests/**
+    - 📁 **106032/**
+      - 📄 [C. String Value.py](%21codeforces/contests/106032/C.%20String%20Value.py)
+      - 📄 [K. University Exam.py](%21codeforces/contests/106032/K.%20University%20Exam.py)
+      - 📄 [M. Destiny changes the game.py](%21codeforces/contests/106032/M.%20Destiny%20changes%20the%20game.py)
     - 📁 **Codeforces Round 1039 (Div. 2)/**
+      - 📁 **106035/**
+        - 📄 [A. Pyramidal paths.py](%21codeforces/contests/Codeforces%20Round%201039%20%28Div.%202%29/106035/A.%20Pyramidal%20paths.py)
+        - 📄 [C - Unsuccessful pseudo-random.py](%21codeforces/contests/Codeforces%20Round%201039%20%28Div.%202%29/106035/C%20-%20Unsuccessful%20pseudo-random.py)
+        - 📄 [K - Gray's numerical sequence.py](%21codeforces/contests/Codeforces%20Round%201039%20%28Div.%202%29/106035/K%20-%20Gray%27s%20numerical%20sequence.py)
+        - 📄 [L - Pills.py](%21codeforces/contests/Codeforces%20Round%201039%20%28Div.%202%29/106035/L%20-%20Pills.py)
       - 📄 [A. Recycling Center.py](%21codeforces/contests/Codeforces%20Round%201039%20%28Div.%202%29/A.%20Recycling%20Center.py)
       - 📄 [B. Deque Process.py](%21codeforces/contests/Codeforces%20Round%201039%20%28Div.%202%29/B.%20Deque%20Process.py)
 - 📁 **!leetcode/**
