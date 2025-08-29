@@ -1,8 +1,8 @@
 N = int(input())
-Adrian = ['A', 'B', 'C']*N
-Bruno = ['B', 'A', 'B', 'C']*N
-Goran = ['C', 'C', 'A', 'A', 'B', 'B']*N
-scores = {'Adrian':0, 'Bruno':0, 'Goran':0}
+Adrian = ['A', 'B', 'C'] * N
+Bruno = ['B', 'A', 'B', 'C'] * N
+Goran = ['C', 'C', 'A', 'A', 'B', 'B'] * N
+scores = {'Adrian': 0, 'Bruno': 0, 'Goran': 0}
 key = input()
 for i in range(N):
     if (Adrian[i] == key[i]):
