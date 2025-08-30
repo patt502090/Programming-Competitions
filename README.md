@@ -1,5 +1,7 @@
 # 🏆 Competitive Programming Archive
 
+![Banner](https://via.placeholder.com/900x200/4B8BBE/FFFFFF?text=Competitive+Programming+Repo)
+
 > 💻 A collection of past code from competitive programming practice — kept as a memory and for future reference
 > 📅 Languages: **Python**, **Go**
 > ✨ Featuring problems from **ICPC**, **TOI**, **LeetCode**, **Codeforces**, and more
@@ -95,6 +97,7 @@
 - 📄 [README.md](README.md)
 - 📁 **TOI-ZERO/**
   - 📄 [A3-028 Minesweeper.py](TOI-ZERO/A3-028%20Minesweeper.py)
+  - 📄 [ไฟคริสมาส.py](TOI-ZERO/%E0%B9%84%E0%B8%9F%E0%B8%84%E0%B8%A3%E0%B8%B4%E0%B8%AA%E0%B8%A1%E0%B8%B2%E0%B8%AA.py)
 - 📁 **basic/**
   - 📄 [Paulo Plan.py](basic/Paulo%20Plan.py)
   - 📄 [Shortest Path.py](basic/Shortest%20Path.py)
