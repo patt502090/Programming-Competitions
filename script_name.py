@@ -32,9 +32,7 @@ def md_list(dir_path, prefix=""):
 if __name__ == "__main__":
     # README header
     header = """# 🏆 Competitive Programming Archive
-
-![Banner](https://via.placeholder.com/900x200/4B8BBE/FFFFFF?text=Competitive+Programming+Repo)
-
+    
 > 💻 A collection of past code from competitive programming practice — kept as a memory and for future reference
 > 📅 Languages: **Python**, **Go**
 > ✨ Featuring problems from **ICPC**, **TOI**, **LeetCode**, **Codeforces**, and more
